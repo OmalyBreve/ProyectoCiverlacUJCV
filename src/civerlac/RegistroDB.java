@@ -21,7 +21,8 @@ public class RegistroDB {
     Connection con = null;
     PreparedStatement ps = null;
     ResultSet rs = null;
-
+    
+     ErrorLogs el = new ErrorLogs();
     public boolean RegistrarUsuario(int id, String clave, int privilegio) {
 
         String sql = "INSERT INTO `EmpleadoUsuario`( `idUsuario`, `clave`,`privilegio` ) VALUES (?,?,?)";
@@ -35,9 +36,11 @@ public class RegistroDB {
             ps.setInt(3, privilegio);
             ps.execute();
             JOptionPane.showMessageDialog(null, "Registro exitoso");
+            el.LogBitacora("El registro de usuario fue exitoso");
             return true;
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "El empleado ya cuenta con un usuario");
+             el.LogBitacora("Error, no se inserto el usuario" + e);
             return false;
         }
 

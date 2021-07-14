@@ -15,6 +15,7 @@ public class LoginDB {
     PreparedStatement ps= null;
     ResultSet rs= null;
     ConexionSQL cn = new ConexionSQL();
+    ErrorLogs el = new ErrorLogs();
     
     public Login log(String user, String pass){
         
@@ -49,9 +50,10 @@ public class LoginDB {
             ps.setString(3, intento);
             ps.execute();
 //            JOptionPane.showMessageDialog(null, "Registro Exitoso");
+            el.LogBitacora("El registro tuvo exito");
             return true;
         } catch (SQLException e) {
-           JOptionPane.showMessageDialog(null,"Error log "+ e);
+           JOptionPane.showMessageDialog(null,"Error al registrar"+ e);
             return false;
         }
         
@@ -66,9 +68,10 @@ public class LoginDB {
             ps.setString(1, intento);
             ps.execute();
 //            JOptionPane.showMessageDialog(null, "update Exitoso");
+            el.LogBitacora("Update loging tuvo exito");
             return true;
         } catch (SQLException e) {
-           JOptionPane.showMessageDialog(null,"Error log "+ e);
+           JOptionPane.showMessageDialog(null,"Error al update loging"+ e);
             return false;
         }
        
@@ -95,8 +98,11 @@ public class LoginDB {
                 listaCL.add(cl);
 
             }
+            el.LogBitacora("Lista datos empresa tuvo exito");
         } catch (SQLException e) {
             System.out.println(e.toString());
+            el.LogBitacora("Error al listar datos de empresa" + e);
+            
         }
         return listaCL;
     }

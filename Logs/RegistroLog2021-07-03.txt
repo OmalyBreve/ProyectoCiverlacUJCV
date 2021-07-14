@@ -1,0 +1,14 @@
+2021-07-03 05:06:56 -- Conexion Exitosa al servidor de datos
+2021-07-03 05:10:25 -- No se pudo realizar la conexion con el servidorjava.sql.SQLSyntaxErrorException: Unknown database 'cirverlac'
+2021-07-03 05:21:16 -- Regitro Usuarios
+ Conexion Exitosa
+2021-07-03 05:22:44 -- Regitro Usuarios
+ Conexion Exitosa
+2021-07-03 05:23:53 -- Regitro Usuarios
+ Conexion Exitosa
+2021-07-03 05:24:55 -- Regitro Usuarios
+ Conexion Exitosa
+2021-07-03 05:27:31 -- Regitro Usuarios
+ Conexion Exitosa
+2021-07-03 05:27:36 -- No se inserto el usuariojava.sql.SQLIntegrityConstraintViolationException: Duplicate entry '4' for key 'empleadousuario.PRIMARY'
+2021-07-03 05:37:59 -- Conexion Exitosa al servidor de datos

@@ -23,6 +23,7 @@ public class ProductoDB {
     Connection con = null;
     PreparedStatement ps = null;
     ResultSet rs = null;
+    ErrorLogs el = new ErrorLogs();
 
     public boolean registrarProducto(producto prod) {
 
@@ -37,9 +38,11 @@ public class ProductoDB {
             ps.setInt(3, prod.getStock());
             ps.execute();
             JOptionPane.showMessageDialog(null, "Registro exitoso");
+            el.LogBitacora("Registrar producto tuvo exito");
             return true;
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e.toString());
+            el.LogBitacora("Error al registrar un producto"+ e);
             return false;
         }
 
@@ -60,8 +63,10 @@ public class ProductoDB {
             ps.execute();
             System.out.println("precio historico insert");
             //return true;
+            el.LogBitacora("Registrar precio historico tuvo exito");
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e.toString());
+            el.LogBitacora("Error al registrar precio historico"+ e);
             //return false;
         }
 
@@ -105,8 +110,10 @@ public class ProductoDB {
             ps.execute();
             System.out.println("precio historico update");
             //return true;
+            el.LogBitacora("Update precio historico tuvo exito");
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "error insert" + e.toString());
+            el.LogBitacora("Error al update precio historico" + e);
             //return false;
         }
 
@@ -126,9 +133,11 @@ public class ProductoDB {
             ps.setInt(4, prod.getId());
             ps.execute();
             JOptionPane.showMessageDialog(null, "Registro actualizado correctamente");
+            el.LogBitacora("Update producto tuvo exito");
             return true;
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e.toString());
+            el.LogBitacora("Error al update producuto" + e);
             return false;
         }
 
@@ -145,9 +154,11 @@ public class ProductoDB {
             ps.setInt(1, prod.getId());
             ps.execute();
             JOptionPane.showMessageDialog(null, "Registro eliminado exitosamente");
+            el.LogBitacora("Delete producto tuvo exito");
             return true;
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e.toString());
+            el.LogBitacora("Errro al delete producto" + e);
             return false;
         }
 
@@ -173,9 +184,12 @@ public class ProductoDB {
                 listaProd.add(cl);
 
             }
+            el.LogBitacora("Listar productos tuvo exito");
         } catch (SQLException e) {
             System.out.println(e.toString());
+             el.LogBitacora("Error al listar productos" + e);
         }
+       
         return listaProd;
     }
 
@@ -197,8 +211,10 @@ public class ProductoDB {
                 listaProd.add(cl);
 
             }
+            el.LogBitacora("Listar precio historico tuvo exito");
         } catch (SQLException e) {
             System.out.println("query1" + e.toString());
+            el.LogBitacora("Error al listar precio historico" + e);
         }
         return listaProd;
     }

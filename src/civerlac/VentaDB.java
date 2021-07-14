@@ -21,6 +21,7 @@ public class VentaDB {
     Connection con = null;
     PreparedStatement ps = null;
     ResultSet rs = null;
+    ErrorLogs el = new ErrorLogs();
 
     public boolean registrarClientes(Ventas cl) {
 
@@ -35,9 +36,12 @@ public class VentaDB {
             ps.setDouble(3, cl.getTotal());
             ps.execute();
             JOptionPane.showMessageDialog(null, "Registro exitoso");
+            el.LogBitacora("Registrar clientes tuvo exito");
             return true;
+            
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e.toString());
+            el.LogBitacora("Error al registrr clientes");
             return false;
         }
 

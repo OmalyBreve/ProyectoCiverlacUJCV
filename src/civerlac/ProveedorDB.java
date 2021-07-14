@@ -16,6 +16,7 @@ public class ProveedorDB {
     Connection con = null;
     PreparedStatement ps = null;
     ResultSet rs = null;
+    ErrorLogs el = new ErrorLogs();
     public boolean ValidarTelefonoProovedor(String telefono) {
 
         String sql = "Select * from proveedor where TelefonoPro= ? ";
@@ -27,13 +28,14 @@ public class ProveedorDB {
             rs= ps.executeQuery();
             if(rs.next()){
                 System.out.println("El telefono Existe");
+                el.LogBitacora("Validar telefono proveedor tuvo exito");
                 return true;
             }else{
                 return false;
             }
             
         } catch (SQLException e) {
-           
+           el.LogBitacora("Error al validar telefono proveedor" + e);
             return false;
         }
         
@@ -54,14 +56,18 @@ public class ProveedorDB {
             String estado = rs.getString("Estado");
             System.out.println(estado);
             if( "1".equals(estado) ){
+                el.LogBitacora("");
+                el.LogBitacora("Validar update telefono proveedor tuvo exito");
                 return 1;
             }
             else{
+                
+               
                 return 0;
             }
-            
+             
         } catch (SQLException e) {
-           
+           el.LogBitacora("Error al validar update telefono proveedor" + e);
             return 0;
         }
         
@@ -82,9 +88,12 @@ public class ProveedorDB {
             ps.setInt(5, cl.getEstado());
             ps.execute();
             JOptionPane.showMessageDialog(null, "Registro exitoso");
+            el.LogBitacora("Registrar proveedor tuvo exito");
             return true;
+            
         } catch (SQLException e) {
             //JOptionPane.showMessageDialog(null, e.toString());
+            el.LogBitacora("Error al registrar el proveedor" + e);
             return false;
         }
 
@@ -106,9 +115,11 @@ public class ProveedorDB {
             ps.setInt(6, cl.getIdCliente());
             ps.execute();
             JOptionPane.showMessageDialog(null, "Registro actualizado correctamente");
+            el.LogBitacora("Update proveedor tuvo exito");
             return true;
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e.toString());
+            el.LogBitacora("Error al update proveedor" + e);
             return false;
         }
 
@@ -135,9 +146,12 @@ public class ProveedorDB {
                 listaCL.add(cl);
 
             }
+            el.LogBitacora("Listar cliente tuvo exito");
         } catch (SQLException e) {
             System.out.println(e.toString());
+            el.LogBitacora("Error al listar clientes" + e);
         }
+        
         return listaCL;
     }
 

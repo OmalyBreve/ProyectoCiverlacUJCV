@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author khaleb
+ * @author Omaly Breve
  */
 public class ConfiguracionEmpresa extends javax.swing.JFrame {
 

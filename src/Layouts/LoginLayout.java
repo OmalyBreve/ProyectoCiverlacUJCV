@@ -9,6 +9,7 @@ import static Layouts.RegistroLayout.getHash;
 import civerlac.Cliente;
 import civerlac.ConexionSQL;
 import civerlac.DatosEmpresa;
+import civerlac.ErrorLogs;
 import civerlac.Login;
 import civerlac.LoginDB;
 import civerlac.ProductoDB;
@@ -47,7 +48,11 @@ public class LoginLayout extends javax.swing.JFrame {
          this.setTitle("Login"); 
 
     }
-
+    ErrorLogs el = new ErrorLogs();// instancia de la clase error log
+    //los logs se generan donde vos queras que se capture ingormacion
+    //la funcion solo espera un parametro, el mensaje
+    // normalmente los logs van dentro de los try catch, donde vas guardando los logs de los registros
+    // vamos al try catch de el boton login
     public void validar() {
         user = txtUsuario.getText();
         pass = String.valueOf(txtContrasena.getPassword());
@@ -212,6 +217,7 @@ public class LoginLayout extends javax.swing.JFrame {
 
     }
 
+        // si el try catch dice static, no lo va reconocer
     public static String getHash(String txt, String hashType) {
         try {
             java.security.MessageDigest md = java.security.MessageDigest
@@ -225,6 +231,7 @@ public class LoginLayout extends javax.swing.JFrame {
             return sb.toString();
         } catch (java.security.NoSuchAlgorithmException e) {
             System.out.println(e.getMessage());
+            
         }
         return null;
     }
@@ -254,7 +261,9 @@ public class LoginLayout extends javax.swing.JFrame {
 
             if (txtUsuario.getText().length() < 26 && txtContrasena.getText().length() < 26) {
                 try {
-                    con = cn.getConnection();
+                    
+                    con = cn.getConnection();// asui se genra la conexion, si todo salio bien// quiero ese log
+                    // me voy al final a hacerlo
                     ps = con.prepareStatement(sql);
                     if (txtUsuario.getText() != "" && txtUsuario.getText().contains("@")) {
                         if (txtUsuario.getText().contains("gmail.com") || txtUsuario.getText().contains("yahoo.com")
@@ -295,6 +304,8 @@ public class LoginLayout extends javax.swing.JFrame {
                                             Sistema sistem = new Sistema();
                                             sistem.setPrivilegioUser(vals.getPrivilegio());
                                             new Sistema().setVisible(true);
+                                            el.LogBitacora("El usuario " + userLog + vals.getUsuario() + "ingreso al sistema");
+                                            
                                             dispose();
                                         } else if (intentos == 3) {
                                               LoginDB lg = new LoginDB();
@@ -307,6 +318,7 @@ public class LoginLayout extends javax.swing.JFrame {
                                             ps = con.prepareStatement(sql4);
                                             ps.setString(1, txtUsuario.getText().trim());
                                             ps.executeUpdate();
+                                            el.LogBitacora("El usuario " + txtUsuario.getText() + "fue bloqueado por limite de intentos");
                                             System.exit(0);
                                         } else if (intentos == 2) {
                                             LoginDB lg = new LoginDB();
@@ -314,15 +326,20 @@ public class LoginLayout extends javax.swing.JFrame {
                                                 state = "reStart";
                                                 lg.updateLogLogin("2");
                                             }
+                                             el.LogBitacora("El usuario " + txtUsuario.getText() + "lleva 2 intentos");
                                             JOptionPane.showMessageDialog(null, "Clave incorrecta, le queda 1 intento", "Error", JOptionPane.WARNING_MESSAGE);
                                         } else if (intentos == 1) {
                                             state = "start";
                                             LoginDB lg = new LoginDB();
                                             lg.registroLogLogin(fechaActual, userLog, "1");
                                             JOptionPane.showMessageDialog(null, "Clave incorrecta, le quedan 2 intentos", "Error", JOptionPane.WARNING_MESSAGE);
+                                             el.LogBitacora("El usuario " + txtUsuario.getText() + "lleva 1 intento");
                                         }
+                                       
                                     }
-
+                                    /// 
+                                    el.LogBitacora("Conexion Exitosa al servidor de datos"); // el es la instancia de la clase ErrorLog, LogBitacora es el metodo
+                                    // y adentro esta el mensaje, probemos
                                 } else {
                                     JOptionPane.showMessageDialog(null, "El usuario no esta habilitado", "Error", JOptionPane.WARNING_MESSAGE);
                                 }

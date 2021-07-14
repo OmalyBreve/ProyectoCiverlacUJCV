@@ -1,0 +1,202 @@
+2021-07-12 05:32:09 -- Se realizo la conexion con exito
+2021-07-12 05:32:10 -- Se realizo la conexion con exito
+2021-07-12 05:32:10 -- Listado de clientes con exito
+2021-07-12 05:32:10 -- Listar clientes tuvo exito
+2021-07-12 05:32:10 -- Se realizo la conexion con exito
+2021-07-12 05:32:10 -- Listar cliente tuvo exito
+2021-07-12 05:32:10 -- Se realizo la conexion con exito
+2021-07-12 05:32:10 -- Listar productos tuvo exito
+2021-07-12 05:32:10 -- Se realizo la conexion con exito
+2021-07-12 05:32:10 -- Listar empleados tuvo exito
+2021-07-12 05:32:10 -- Se realizo la conexion con exito
+2021-07-12 05:32:10 -- Se listo con exito el historial de venta
+2021-07-12 05:32:10 -- Se realizo la conexion con exito
+2021-07-12 05:32:10 -- Se listo el historial de factura con exito
+2021-07-12 05:32:10 -- Se realizo la conexion con exito
+2021-07-12 05:32:10 -- Listar productos tuvo exito
+2021-07-12 05:32:10 -- Se realizo la conexion con exito
+2021-07-12 05:32:10 -- Se realizo la conexion con exito
+2021-07-12 05:32:10 -- Se realizo la conexion con exito
+2021-07-12 05:32:10 -- Listado de clientes con exito
+2021-07-12 05:32:10 -- Listar clientes tuvo exito
+2021-07-12 05:32:10 -- Se realizo la conexion con exito
+2021-07-12 05:32:10 -- Listar cliente tuvo exito
+2021-07-12 05:32:10 -- Se realizo la conexion con exito
+2021-07-12 05:32:10 -- Listar productos tuvo exito
+2021-07-12 05:32:10 -- Se realizo la conexion con exito
+2021-07-12 05:32:10 -- Listar empleados tuvo exito
+2021-07-12 05:32:10 -- Se realizo la conexion con exito
+2021-07-12 05:32:10 -- Se listo con exito el historial de venta
+2021-07-12 05:32:10 -- Se realizo la conexion con exito
+2021-07-12 05:32:10 -- Se listo el historial de factura con exito
+2021-07-12 05:32:10 -- Se realizo la conexion con exito
+2021-07-12 05:32:10 -- Listar productos tuvo exito
+2021-07-12 05:32:10 -- Se realizo la conexion con exito
+2021-07-12 05:32:10 -- Se realizo la conexion con exito
+2021-07-12 05:32:10 -- El usuario 4Omaly Breveingreso al sistema
+2021-07-12 05:32:10 -- Conexion Exitosa al servidor de datos
+2021-07-12 05:32:47 -- Se realizo la conexion con exito
+2021-07-12 05:32:47 -- Se listo el historial de factura con exito
+2021-07-12 05:32:49 -- Se realizo la conexion con exito
+2021-07-12 05:32:49 -- Se listo el historial de factura con exito
+2021-07-12 05:32:50 -- Se realizo la conexion con exito
+2021-07-12 05:32:50 -- Se listo el historial de factura con exito
+2021-07-12 05:32:51 -- Se realizo la conexion con exito
+2021-07-12 05:32:51 -- Se listo el historial de factura con exito
+2021-07-12 05:33:05 -- Se realizo la conexion con exito
+2021-07-12 05:33:05 -- Se listo el historial de factura con exito
+2021-07-12 05:33:59 -- Se realizo la conexion con exito
+2021-07-12 05:34:00 -- Se realizo la conexion con exito
+2021-07-12 05:35:12 -- Se realizo la conexion con exito
+2021-07-12 05:35:12 -- Se realizo la conexion con exito
+2021-07-12 05:35:46 -- Se realizo la conexion con exito
+2021-07-12 05:35:46 -- Se realizo la conexion con exito
+2021-07-12 05:36:04 -- Se realizo la conexion con exito
+2021-07-12 05:36:05 -- Se realizo la conexion con exito
+2021-07-12 05:36:05 -- Listado de clientes con exito
+2021-07-12 05:36:05 -- Listar clientes tuvo exito
+2021-07-12 05:36:05 -- Se realizo la conexion con exito
+2021-07-12 05:36:05 -- Listar cliente tuvo exito
+2021-07-12 05:36:05 -- Se realizo la conexion con exito
+2021-07-12 05:36:05 -- Listar productos tuvo exito
+2021-07-12 05:36:05 -- Se realizo la conexion con exito
+2021-07-12 05:36:05 -- Listar empleados tuvo exito
+2021-07-12 05:36:05 -- Se realizo la conexion con exito
+2021-07-12 05:36:05 -- Se listo con exito el historial de venta
+2021-07-12 05:36:05 -- Se realizo la conexion con exito
+2021-07-12 05:36:05 -- Se listo el historial de factura con exito
+2021-07-12 05:36:05 -- Se realizo la conexion con exito
+2021-07-12 05:36:05 -- Listar productos tuvo exito
+2021-07-12 05:36:05 -- Se realizo la conexion con exito
+2021-07-12 05:36:05 -- Se realizo la conexion con exito
+2021-07-12 05:36:05 -- Se realizo la conexion con exito
+2021-07-12 05:36:05 -- Listado de clientes con exito
+2021-07-12 05:36:05 -- Listar clientes tuvo exito
+2021-07-12 05:36:05 -- Se realizo la conexion con exito
+2021-07-12 05:36:05 -- Listar cliente tuvo exito
+2021-07-12 05:36:05 -- Se realizo la conexion con exito
+2021-07-12 05:36:05 -- Listar productos tuvo exito
+2021-07-12 05:36:05 -- Se realizo la conexion con exito
+2021-07-12 05:36:05 -- Listar empleados tuvo exito
+2021-07-12 05:36:05 -- Se realizo la conexion con exito
+2021-07-12 05:36:05 -- Se listo con exito el historial de venta
+2021-07-12 05:36:05 -- Se realizo la conexion con exito
+2021-07-12 05:36:05 -- Se listo el historial de factura con exito
+2021-07-12 05:36:05 -- Se realizo la conexion con exito
+2021-07-12 05:36:05 -- Listar productos tuvo exito
+2021-07-12 05:36:05 -- Se realizo la conexion con exito
+2021-07-12 05:36:05 -- Se realizo la conexion con exito
+2021-07-12 05:36:05 -- El usuario 4Omaly Breveingreso al sistema
+2021-07-12 05:36:05 -- Conexion Exitosa al servidor de datos
+2021-07-12 05:36:07 -- Se realizo la conexion con exito
+2021-07-12 05:36:07 -- Se listo el historial de factura con exito
+2021-07-12 05:36:16 -- Se realizo la conexion con exito
+2021-07-12 05:36:16 -- Se realizo la conexion con exito
+2021-07-12 05:36:17 -- Se realizo la conexion con exito
+2021-07-12 05:36:17 -- Se realizo la conexion con exito
+2021-07-12 05:36:18 -- Se realizo la conexion con exito
+2021-07-12 05:36:18 -- Se listo el historial de factura con exito
+2021-07-12 05:36:19 -- Se realizo la conexion con exito
+2021-07-12 05:36:19 -- Se realizo la conexion con exito
+2021-07-12 05:37:54 -- Se realizo la conexion con exito
+2021-07-12 05:37:55 -- Se realizo la conexion con exito
+2021-07-12 05:38:15 -- Se realizo la conexion con exito
+2021-07-12 05:38:15 -- Se realizo la conexion con exito
+2021-07-12 05:38:32 -- Se realizo la conexion con exito
+2021-07-12 05:38:33 -- Se realizo la conexion con exito
+2021-07-12 05:38:33 -- Listado de clientes con exito
+2021-07-12 05:38:33 -- Listar clientes tuvo exito
+2021-07-12 05:38:33 -- Se realizo la conexion con exito
+2021-07-12 05:38:33 -- Listar cliente tuvo exito
+2021-07-12 05:38:33 -- Se realizo la conexion con exito
+2021-07-12 05:38:33 -- Listar productos tuvo exito
+2021-07-12 05:38:33 -- Se realizo la conexion con exito
+2021-07-12 05:38:33 -- Listar empleados tuvo exito
+2021-07-12 05:38:33 -- Se realizo la conexion con exito
+2021-07-12 05:38:33 -- Se listo con exito el historial de venta
+2021-07-12 05:38:33 -- Se realizo la conexion con exito
+2021-07-12 05:38:33 -- Se listo el historial de factura con exito
+2021-07-12 05:38:33 -- Se realizo la conexion con exito
+2021-07-12 05:38:33 -- Listar productos tuvo exito
+2021-07-12 05:38:33 -- Se realizo la conexion con exito
+2021-07-12 05:38:33 -- Se realizo la conexion con exito
+2021-07-12 05:38:33 -- Se realizo la conexion con exito
+2021-07-12 05:38:33 -- Listado de clientes con exito
+2021-07-12 05:38:33 -- Listar clientes tuvo exito
+2021-07-12 05:38:33 -- Se realizo la conexion con exito
+2021-07-12 05:38:33 -- Listar cliente tuvo exito
+2021-07-12 05:38:34 -- Se realizo la conexion con exito
+2021-07-12 05:38:34 -- Listar productos tuvo exito
+2021-07-12 05:38:34 -- Se realizo la conexion con exito
+2021-07-12 05:38:34 -- Listar empleados tuvo exito
+2021-07-12 05:38:34 -- Se realizo la conexion con exito
+2021-07-12 05:38:34 -- Se listo con exito el historial de venta
+2021-07-12 05:38:34 -- Se realizo la conexion con exito
+2021-07-12 05:38:34 -- Se listo el historial de factura con exito
+2021-07-12 05:38:34 -- Se realizo la conexion con exito
+2021-07-12 05:38:34 -- Listar productos tuvo exito
+2021-07-12 05:38:34 -- Se realizo la conexion con exito
+2021-07-12 05:38:34 -- Se realizo la conexion con exito
+2021-07-12 05:38:34 -- El usuario 4Omaly Breveingreso al sistema
+2021-07-12 05:38:34 -- Conexion Exitosa al servidor de datos
+2021-07-12 05:38:40 -- Se realizo la conexion con exito
+2021-07-12 05:38:40 -- Se listo el historial de factura con exito
+2021-07-12 05:38:41 -- Se realizo la conexion con exito
+2021-07-12 05:38:41 -- Se listo el historial de factura con exito
+2021-07-12 05:39:17 -- Se realizo la conexion con exito
+2021-07-12 05:39:18 -- Se realizo la conexion con exito
+2021-07-12 05:39:18 -- Listado de clientes con exito
+2021-07-12 05:39:18 -- Listar clientes tuvo exito
+2021-07-12 05:39:18 -- Se realizo la conexion con exito
+2021-07-12 05:39:18 -- Listar cliente tuvo exito
+2021-07-12 05:39:18 -- Se realizo la conexion con exito
+2021-07-12 05:39:18 -- Listar productos tuvo exito
+2021-07-12 05:39:18 -- Se realizo la conexion con exito
+2021-07-12 05:39:18 -- Listar empleados tuvo exito
+2021-07-12 05:39:18 -- Se realizo la conexion con exito
+2021-07-12 05:39:18 -- Se listo con exito el historial de venta
+2021-07-12 05:39:18 -- Se realizo la conexion con exito
+2021-07-12 05:39:18 -- Se listo el historial de factura con exito
+2021-07-12 05:39:18 -- Se realizo la conexion con exito
+2021-07-12 05:39:18 -- Listar productos tuvo exito
+2021-07-12 05:39:18 -- Se realizo la conexion con exito
+2021-07-12 05:39:18 -- Se realizo la conexion con exito
+2021-07-12 05:39:18 -- Se realizo la conexion con exito
+2021-07-12 05:39:18 -- Listado de clientes con exito
+2021-07-12 05:39:18 -- Listar clientes tuvo exito
+2021-07-12 05:39:18 -- Se realizo la conexion con exito
+2021-07-12 05:39:18 -- Listar cliente tuvo exito
+2021-07-12 05:39:18 -- Se realizo la conexion con exito
+2021-07-12 05:39:18 -- Listar productos tuvo exito
+2021-07-12 05:39:18 -- Se realizo la conexion con exito
+2021-07-12 05:39:18 -- Listar empleados tuvo exito
+2021-07-12 05:39:18 -- Se realizo la conexion con exito
+2021-07-12 05:39:18 -- Se listo con exito el historial de venta
+2021-07-12 05:39:18 -- Se realizo la conexion con exito
+2021-07-12 05:39:18 -- Se listo el historial de factura con exito
+2021-07-12 05:39:18 -- Se realizo la conexion con exito
+2021-07-12 05:39:18 -- Listar productos tuvo exito
+2021-07-12 05:39:18 -- Se realizo la conexion con exito
+2021-07-12 05:39:18 -- Se realizo la conexion con exito
+2021-07-12 05:39:18 -- El usuario 5Derick Canalesingreso al sistema
+2021-07-12 05:39:18 -- Conexion Exitosa al servidor de datos
+2021-07-12 05:39:35 -- Se realizo la conexion con exito
+2021-07-12 05:39:35 -- Se listo el historial de factura con exito
+2021-07-12 05:39:38 -- Se realizo la conexion con exito
+2021-07-12 05:39:38 -- Se realizo la conexion con exito
+2021-07-12 05:39:39 -- Se realizo la conexion con exito
+2021-07-12 05:39:39 -- Se realizo la conexion con exito
+2021-07-12 05:39:40 -- Se realizo la conexion con exito
+2021-07-12 05:39:40 -- Se realizo la conexion con exito
+2021-07-12 05:39:40 -- Se realizo la conexion con exito
+2021-07-12 05:39:40 -- Se realizo la conexion con exito
+2021-07-12 05:39:41 -- Se realizo la conexion con exito
+2021-07-12 05:39:41 -- Se realizo la conexion con exito
+2021-07-12 05:39:41 -- Se realizo la conexion con exito
+2021-07-12 05:39:41 -- Se realizo la conexion con exito
+2021-07-12 05:40:21 -- Se realizo la conexion con exito
+2021-07-12 05:40:21 -- Se realizo la conexion con exito
+2021-07-12 05:40:38 -- Se realizo la conexion con exito
+2021-07-12 05:40:38 -- Se realizo la conexion con exito
+2021-07-12 05:40:54 -- Se realizo la conexion con exito
+2021-07-12 05:40:54 -- Se realizo la conexion con exito

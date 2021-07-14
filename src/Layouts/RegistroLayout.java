@@ -1,6 +1,7 @@
 package Layouts;
 
 import civerlac.ConexionSQL;
+import civerlac.ErrorLogs;
 import civerlac.RegistroDB;
 import static com.itextpdf.text.pdf.codec.LZWStringTable.Hash;
 import java.sql.Connection;
@@ -177,6 +178,9 @@ public class RegistroLayout extends javax.swing.JFrame {
     String state = "validar";
     private void btnIniciarRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarRegistroActionPerformed
         int idUser;
+        // me interesa saber que errores pasaron aqui
+        // paso 1
+         ErrorLogs el = new ErrorLogs();// paso 1) solo tenes que copiar esta instancia en donde queras generar logs
         if (txtCorreoElctronicoRegistro.getText() != "") {
             if (state == "validar") {
                 ConexionSQL cn = new ConexionSQL();
@@ -187,6 +191,7 @@ public class RegistroLayout extends javax.swing.JFrame {
 
                 double cantidad;
                 try {
+                    // si la conexion falla o el insert, me interesa saber por que
                     idUser = Integer.parseInt(txtCorreoElctronicoRegistro.getText());
                     con = cn.getConnection();
                     ps = con.prepareStatement(sql);
@@ -203,9 +208,10 @@ public class RegistroLayout extends javax.swing.JFrame {
                         txtCorreoElctronicoRegistro.setEnabled(false);
 
                     }
-
+                    el.LogBitacora("Regitro Usuarios\n Conexion Exitosa" );
                 } catch (SQLException e) {
                     JOptionPane.showMessageDialog(null, e.toString());
+                    el.LogBitacora("Error con la conexion" + e);// paso 2) enviar a la bitacoraLogs, un mensaje y la exepcion, puede ser: e o ex, fijate
 
                 }
 
@@ -216,7 +222,9 @@ public class RegistroLayout extends javax.swing.JFrame {
                     
                 } else {
                     try {
+                        //aqui igual
                         RegistroDB reg = new RegistroDB();
+                        // nunca entr aqui por que el usuario ya existe, cae aqui
                         String encriptMD5 = (txtContrasenaRegistro.getText());
                         String Password = getHash(encriptMD5, "MD5");
                         System.out.println(Password);
@@ -226,7 +234,7 @@ public class RegistroLayout extends javax.swing.JFrame {
 
                     } catch (Exception ex) {
                         JOptionPane.showMessageDialog(null, "Al empleado ya se le asigno un usuario");
-
+                        el.LogBitacora("No se reigstro el usuario" + ex);
                     }
                 }
 

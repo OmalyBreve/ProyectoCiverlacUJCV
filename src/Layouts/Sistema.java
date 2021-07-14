@@ -17,6 +17,7 @@ import civerlac.VentasDB;
 import civerlac.VentasFacturacionHistorial;
 import civerlac.producto;
 import civerlac.valoresEstaticos;
+import java.awt.Color;
 import static java.awt.PageAttributes.MediaType.A;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -55,7 +56,6 @@ import javax.swing.JOptionPane;
  * @author Omaly Breve
  */
 public class Sistema extends javax.swing.JFrame {
-    
 
     /**
      * Creates new form Sistema
@@ -63,7 +63,7 @@ public class Sistema extends javax.swing.JFrame {
     public Sistema() {
         initComponents();
         this.setIconImage(new ImageIcon(getClass().getResource("/img/LOGO.png")).getImage());
-        this.setTitle("Sistema Civerlac"); 
+        this.setTitle("Sistema Civerlac");
         this.setLocationRelativeTo(null);
         ///
         txtIdClienteCLI.setText("Automatico");
@@ -93,6 +93,8 @@ public class Sistema extends javax.swing.JFrame {
             BloquearAcceso();
         }
 
+        UsuarioAcceso();
+        panelInfo.setSelectedIndex(6);
     }
 
     String estado = "";
@@ -134,6 +136,408 @@ public class Sistema extends javax.swing.JFrame {
         jButton4.setEnabled(false);
         btnVentas.setEnabled(false);
         btnEmpresa.setEnabled(false);
+
+    }
+
+    public void UsuarioAcceso() {
+        valoresEstaticos vals = new valoresEstaticos();
+        int idUser = vals.getIdUsuario();
+        System.out.println("el usuario es :" + idUser);
+        ConexionSQL cn = new ConexionSQL();
+        Connection con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        try {
+            String sql2 = "SELECT * FROM usuariopermiso where idUsuario = ? ";
+            con = cn.getConnection();
+            ps = con.prepareStatement(sql2);
+            ps.setInt(1, vals.getIdUsuario());
+            rs = ps.executeQuery();
+            if (rs.next()) {
+
+                con = cn.getConnection();
+                ps = con.prepareStatement(sql2);
+                ps.setInt(1, idUser);
+                rs = ps.executeQuery();
+                if (rs.next()) {
+                    System.out.println(rs.getString("Clientes"));
+                    if ("24".equals(rs.getString("Clientes"))) {
+                        panelInfo.setEnabledAt(0, true);
+                        //bloquear botones
+                        btnClientes.setEnabled(true);
+                        btnModificarCLI.setEnabled(false);
+                        ClienteBuscar.setEnabled(false);
+                    } else if ("27".equals(rs.getString("Clientes"))) {
+                        panelInfo.setEnabledAt(0, true);
+                        //bloquear botones
+                        btnClientes.setEnabled(true);
+                        btnNuevoClienteCLI.setEnabled(false);
+                        btnModificarCLI.setEnabled(true);
+                        ClienteBuscar.setEnabled(false);
+
+                    } else if ("2".equals(rs.getString("Clientes"))) {
+                        panelInfo.setEnabledAt(0, true);
+                        //bloquear botones
+                        btnClientes.setEnabled(true);
+                        btnNuevoClienteCLI.setEnabled(false);
+                        btnModificarCLI.setEnabled(false);
+                        ClienteBuscar.setEnabled(false);
+
+                    } else if ("0".equals(rs.getString("Clientes"))) {
+                        panelInfo.setEnabledAt(0, false);
+                        btnClientes.setEnabled(false);
+
+                    } else if ("2479".equals(rs.getString("Clientes"))) {
+                        panelInfo.setEnabledAt(0, true);
+                        //bloquear botones
+                        btnClientes.setEnabled(true);
+                        btnNuevoClienteCLI.setEnabled(true);
+                        btnModificarCLI.setEnabled(true);
+                        ClienteBuscar.setEnabled(true);
+
+                    } else if ("249".equals(rs.getString("Clientes"))) {
+                        panelInfo.setEnabledAt(0, true);
+                        //bloquear botones
+                        btnClientes.setEnabled(true);
+                        btnNuevoClienteCLI.setEnabled(true);
+                        btnModificarCLI.setEnabled(false);
+                        ClienteBuscar.setEnabled(true);
+
+                    } else if ("247".equals(rs.getString("Clientes"))) {
+                        panelInfo.setEnabledAt(0, true);
+                        //bloquear botones
+                        btnClientes.setEnabled(true);
+                        btnNuevoClienteCLI.setEnabled(true);
+                        btnModificarCLI.setEnabled(true);
+                        ClienteBuscar.setEnabled(false);
+
+                    } else if ("29".equals(rs.getString("Clientes"))) {
+                        panelInfo.setEnabledAt(0, true);
+                        //bloquear botones
+                        btnClientes.setEnabled(true);
+                        btnNuevoClienteCLI.setEnabled(false);
+                        btnModificarCLI.setEnabled(false);
+                        ClienteBuscar.setEnabled(true);
+
+                    } else if ("27".equals(rs.getString("Clientes"))) {
+                        panelInfo.setEnabledAt(0, true);
+                        //bloquear botones
+                        btnClientes.setEnabled(true);
+                        btnNuevoClienteCLI.setEnabled(false);
+                        btnModificarCLI.setEnabled(true);
+                        ClienteBuscar.setEnabled(false);
+                    }
+                    /// proveedor
+                    if ("24".equals(rs.getString("Proveedores"))) {
+                        panelInfo.setEnabledAt(1, true);
+                        //bloquear botones
+                        btnProveedores.setEnabled(true);
+                        btnModificarProveedores.setEnabled(false);
+                        jButton2.setEnabled(false);
+                    } else if ("27".equals(rs.getString("Proveedores"))) {
+                        panelInfo.setEnabledAt(1, true);
+                        //bloquear botones
+                        btnProveedores.setEnabled(true);
+                        btnModificarProveedores.setEnabled(true);
+                        jButton2.setEnabled(false);
+
+                    } else if ("2".equals(rs.getString("Proveedores"))) {
+                        panelInfo.setEnabledAt(1, true);
+                        //bloquear botones
+                        btnProveedores.setEnabled(true);
+                        btnNuevoProveedores.setEnabled(false);
+                        btnModificarProveedores.setEnabled(false);
+                        jButton2.setEnabled(false);
+
+                    } else if ("0".equals(rs.getString("Proveedores"))) {
+                        panelInfo.setEnabledAt(1, false);
+                        btnProveedores.setEnabled(false);
+
+                    } else if ("2479".equals(rs.getString("Proveedores"))) {
+                        panelInfo.setEnabledAt(1, true);
+                        //bloquear botones
+                        btnProveedores.setEnabled(true);
+                        btnNuevoProveedores.setEnabled(true);
+                        btnModificarProveedores.setEnabled(true);
+                        jButton2.setEnabled(true);
+
+                    } else if ("249".equals(rs.getString("Proveedores"))) {
+                        panelInfo.setEnabledAt(1, true);
+                        //bloquear botones
+                        btnProveedores.setEnabled(true);
+                        btnNuevoProveedores.setEnabled(true);
+                        btnModificarProveedores.setEnabled(false);
+                        jButton2.setEnabled(true);
+
+                    } else if ("247".equals(rs.getString("Proveedores"))) {
+                        panelInfo.setEnabledAt(1, true);
+                        //bloquear botones
+                        btnProveedores.setEnabled(true);
+                        btnNuevoProveedores.setEnabled(true);
+                        btnModificarProveedores.setEnabled(true);
+                        jButton2.setEnabled(false);
+
+                    } else if ("29".equals(rs.getString("Proveedores"))) {
+                        panelInfo.setEnabledAt(1, true);
+                        //bloquear botones
+                        btnProveedores.setEnabled(true);
+                        btnNuevoProveedores.setEnabled(false);
+                        btnModificarProveedores.setEnabled(false);
+                        jButton2.setEnabled(true);
+
+                    } else if ("27".equals(rs.getString("Proveedores"))) {
+                        panelInfo.setEnabledAt(1, true);
+                        //bloquear botones
+                        btnClientes.setEnabled(true);
+                        btnNuevoProveedores.setEnabled(false);
+                        btnModificarProveedores.setEnabled(true);
+                        jButton2.setEnabled(false);
+                    }
+                    //Empleados
+
+                    System.out.println(rs.getString("Empleados"));
+                    String codEmpleado = "";
+
+                    if (rs.getString("Empleados").contains("3")) {
+                        codEmpleado = rs.getString("Empleados").substring(0, rs.getString("Empleados").length() - 1);
+                    } else {
+                        codEmpleado = rs.getString("Empleados");
+                    }
+                    System.out.println("el codigo de empleado es:" + codEmpleado);
+                    if ("24".equals(codEmpleado)) {
+                        panelInfo.setEnabledAt(2, true);
+                        //bloquear botones
+                        btnEmpleados.setEnabled(true);
+                        btnModificarEmpleado.setEnabled(false);
+                        jButton3.setEnabled(false);
+
+                    } else if ("2".equals(codEmpleado)) {
+                        panelInfo.setEnabledAt(2, true);
+                        //bloquear botones
+                        btnEmpleados.setEnabled(true);
+                        btnModificarEmpleado.setEnabled(false);
+                        jButton3.setEnabled(false);
+                        btnNuevoEmpleado.setEnabled(false);
+                    } else if ("0".equals(codEmpleado)) {
+                        panelInfo.setEnabledAt(2, false);
+                        //bloquear botones
+                        btnEmpleados.setEnabled(false);
+                        btnModificarEmpleado.setEnabled(false);
+                        jButton3.setEnabled(false);
+                        btnNuevoEmpleado.setEnabled(false);
+                    } else if ("2479".equals(codEmpleado)) {
+                        panelInfo.setEnabledAt(2, true);
+                        //bloquear botones
+                    } else if ("249".equals(codEmpleado)) {
+                        panelInfo.setEnabledAt(2, true);
+                        //bloquear botones
+                        btnEmpleados.setEnabled(true);
+                        btnModificarEmpleado.setEnabled(false);
+
+                    } else if ("247".equals(codEmpleado)) {
+                        panelInfo.setEnabledAt(2, true);
+                        //bloquear botones
+                        btnEmpleados.setEnabled(true);
+
+                        jButton3.setEnabled(false);
+
+                    } else if ("29".equals(codEmpleado)) {
+                        panelInfo.setEnabledAt(2, true);
+                        //bloquear botones
+                        btnEmpleados.setEnabled(true);
+                        btnModificarEmpleado.setEnabled(false);
+                        jButton3.setEnabled(true);
+                        btnNuevoEmpleado.setEnabled(false);
+                    } else if ("27".equals(codEmpleado)) {
+                        panelInfo.setEnabledAt(2, true);
+                        //bloquear botones
+                        btnEmpleados.setEnabled(true);
+                        btnModificarEmpleado.setEnabled(true);
+                        jButton3.setEnabled(false);
+                        btnNuevoEmpleado.setEnabled(false);
+
+                    }
+                    if (!rs.getString("Empleados").contains("3")) {
+                        btnAddUser.setEnabled(false);
+                    }
+                    //Productos
+
+                    System.out.println(rs.getString("Productos"));
+                    if ("24".equals(rs.getString("Productos"))) {
+                        panelInfo.setEnabledAt(3, true);
+                        //bloquear botones
+                        btnProductos.setEnabled(true);
+                        btnProdModificar.setEnabled(false);
+                        btnEliminarProductos.setEnabled(false);
+
+                    } else if ("27".equals(rs.getString("Productos"))) {
+                        panelInfo.setEnabledAt(3, true);
+                        //bloquear botones
+                        btnProductos.setEnabled(true);
+                        btnProdModificar.setEnabled(true);
+                        btnEliminarProductos.setEnabled(false);
+                        btnInsert.setEnabled(false);
+
+                    } else if ("2".equals(rs.getString("Productos"))) {
+                        panelInfo.setEnabledAt(3, true);
+                        //bloquear botones
+                        btnProductos.setEnabled(true);
+                        btnProdModificar.setEnabled(false);
+                        btnInsert.setEnabled(false);
+                        btnEliminarProductos.setEnabled(false);
+
+                    } else if ("0".equals(rs.getString("Productos"))) {
+                        panelInfo.setEnabledAt(3, false);
+                        //bloquear botones
+                        btnProductos.setEnabled(false);
+                        btnProdModificar.setEnabled(false);
+                        btnInsert.setEnabled(false);
+                        btnEliminarProductos.setEnabled(false);
+
+                    } else if ("2479".equals(rs.getString("Productos"))) {
+                        panelInfo.setEnabledAt(3, true);
+                        //bloquear botones
+                        btnProductos.setEnabled(true);
+                        btnProdModificar.setEnabled(true);
+                        btnInsert.setEnabled(true);
+                        btnEliminarProductos.setEnabled(true);
+
+                    } else if ("249".equals(rs.getString("Productos"))) {
+                        panelInfo.setEnabledAt(3, true);
+                        //bloquear botones
+                        btnProductos.setEnabled(true);
+                        btnInsert.setEnabled(true);
+                        btnProdModificar.setEnabled(false);
+                        btnEliminarProductos.setEnabled(true);
+
+                    } else if ("247".equals(rs.getString("Productos"))) {
+                        panelInfo.setEnabledAt(3, true);
+                        //bloquear botones
+                        btnProductos.setEnabled(true);
+                        btnInsert.setEnabled(true);
+                        btnProdModificar.setEnabled(true);
+                        btnEliminarProductos.setEnabled(false);
+
+                    } else if ("29".equals(rs.getString("Productos"))) {
+                        panelInfo.setEnabledAt(3, true);
+                        //bloquear botones
+                        btnProductos.setEnabled(true);
+                        btnInsert.setEnabled(false);
+                        btnProdModificar.setEnabled(false);
+                        btnEliminarProductos.setEnabled(true);
+
+                    } else if ("27".equals(rs.getString("Productos"))) {
+
+                        //bloquear botones
+                        btnProductos.setEnabled(true);
+                        btnInsert.setEnabled(false);
+                        btnProdModificar.setEnabled(true);
+                        btnEliminarProductos.setEnabled(false);
+                    }
+                    ///CompraVenta
+                    System.out.println(rs.getString("CompraVenta"));
+                    if ("24".equals(rs.getString("CompraVenta"))) {
+                        panelInfo.setEnabledAt(5, false);
+                        panelInfo.setEnabledAt(7, false);
+                        //bloquear botones
+                        jButton1.setEnabled(false);
+                        jButton5.setEnabled(false);
+                    } else if ("2".equals(rs.getString("CompraVenta"))) {
+                        panelInfo.setEnabledAt(5, false);
+                        panelInfo.setEnabledAt(7, false);
+                        panelInfo.setEnabledAt(6, true);
+                        //bloquear botones
+                        jButton1.setEnabled(false);
+                        jButton5.setEnabled(false);
+                        btnNuevaVenta.setEnabled(true);
+
+                    } else if ("0".equals(rs.getString("CompraVenta"))) {
+                        panelInfo.setEnabledAt(5, false);
+                        panelInfo.setEnabledAt(7, false);
+                        panelInfo.setEnabledAt(6, false);
+                        panelInfo.setEnabledAt(4, false);
+                        //
+                        jButton1.setEnabled(false);
+                        jButton5.setEnabled(false);
+                        btnVentas.setEnabled(false);
+                        btnNuevaVenta.setEnabled(false);
+
+                    } else if ("2479".equals(rs.getString("CompraVenta"))) {
+                        panelInfo.setEnabledAt(5, true);
+                        panelInfo.setEnabledAt(7, true);
+                        panelInfo.setEnabledAt(6, true);
+                        panelInfo.setEnabledAt(4, true);
+//
+                        jButton1.setEnabled(true);
+                        jButton5.setEnabled(true);
+                        btnVentas.setEnabled(true);
+                        btnNuevaVenta.setEnabled(true);
+
+                    } else if ("249".equals(rs.getString("CompraVenta"))) {
+                        jButton1.setEnabled(true);
+                    } else if ("247".equals(rs.getString("CompraVenta"))) {
+                        jButton5.setEnabled(false);
+                         panelInfo.setEnabledAt(5, true);
+                    } else if ("29".equals(rs.getString("CompraVenta"))) {
+                       panelInfo.setEnabledAt(4, true);
+                        panelInfo.setEnabledAt(5, true);
+                        btnVentas.setEnabled(false);
+                        jButton1.setEnabled(false);
+                    } else if ("27".equals(rs.getString("CompraVenta"))) {
+                        panelInfo.setEnabledAt(4, true);
+                        panelInfo.setEnabledAt(5, true);
+                        
+                        btnVentas.setEnabled(false);
+                        jButton5.setEnabled(false);
+
+                    } else if ("47".equals(rs.getString("CompraVenta"))) {
+                        panelInfo.setEnabledAt(6, false);
+                        panelInfo.setEnabledAt(5, false);
+                        
+                        btnNuevaVenta.setEnabled(false);
+                        jButton5.setEnabled(false);
+
+                    } else if ("249".equals(rs.getString("CompraVenta"))) {
+                        panelInfo.setEnabledAt(4, true);
+                        btnVentas.setEnabled(false);
+
+                    } else if ("7".equals(rs.getString("CompraVenta"))) {
+                        panelInfo.setEnabledAt(7, false);
+                        panelInfo.setEnabledAt(4, false);
+                         panelInfo.setEnabledAt(5, false);
+                        
+                        btnNuevaVenta.setEnabled(false);
+                        btnVentas.setEnabled(false);
+                        jButton5.setEnabled(false);
+
+                    }
+
+                    //otros
+                    if ("24".equals(rs.getString("Otros"))) {
+                        btnEmpresa.setEnabled(true);
+                        panelInfo.setEnabledAt(8, true);
+                    } else if ("4".equals(rs.getString("Otros"))) {
+                        btnEmpresa.setEnabled(false);
+                        panelInfo.setEnabledAt(8, true);
+                    } else if ("2".equals(rs.getString("Otros"))) {
+                        panelInfo.setEnabledAt(8, false);
+                        btnEmpresa.setEnabled(true);
+                    } else if ("0".equals(rs.getString("Otros"))) {
+                        panelInfo.setEnabledAt(8, false);
+                        btnEmpresa.setEnabled(false);
+                    }
+
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(null, "El usuario no esta registrado", "Error", JOptionPane.WARNING_MESSAGE);
+            }
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e.toString());
+
+        }
 
     }
 
@@ -1078,6 +1482,8 @@ public class Sistema extends javax.swing.JFrame {
         });
         tabProveedores.add(cbEstadoProveedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 310, 201, -1));
 
+        jScrollPane3.setBackground(new java.awt.Color(255, 255, 255));
+
         tbProveedores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -1336,7 +1742,7 @@ public class Sistema extends javax.swing.JFrame {
                 btnNuevoEmpleadoActionPerformed(evt);
             }
         });
-        tabEmpleados.add(btnNuevoEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, -1, -1));
+        tabEmpleados.add(btnNuevoEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, -1, -1));
 
         btnModificarEmpleado.setBackground(new java.awt.Color(0, 153, 153));
         btnModificarEmpleado.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -2187,6 +2593,8 @@ public class Sistema extends javax.swing.JFrame {
         txtTotalVN.setEditable(false);
         tabNuevaVenta.add(txtTotalVN, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 60, 105, 24));
 
+        jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
+
         tbNuevaVenta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -2331,6 +2739,8 @@ public class Sistema extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(0, 153, 153));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jScrollPane8.setBackground(new java.awt.Color(255, 255, 255));
 
         tbhistorialventaFactura.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -2596,6 +3006,11 @@ public class Sistema extends javax.swing.JFrame {
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton1MouseClicked(evt);
+            }
+        });
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -2978,7 +3393,7 @@ public class Sistema extends javax.swing.JFrame {
     }
     private void btnVentaNVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentaNVActionPerformed
         // rreccorrer Lista Productos
-         Operacion ="venta";
+        Operacion = "venta";
         datosProductoCompra dataProductos = new datosProductoCompra();
 //                for (int i = 0; i < tbNuevaVenta.getRowCount(); i++) {
 //                    
@@ -3021,7 +3436,7 @@ public class Sistema extends javax.swing.JFrame {
                 if (cmbtipopago.getSelectedItem() == "Tarjeta") {
                     txtCambio.setText("0.00");
                     txtMontoPagar.setText("0.00");
-                    data.RegistrarVenta(vnt, cmbtipopago.getSelectedIndex() + 1,"Tarje");
+                    data.RegistrarVenta(vnt, cmbtipopago.getSelectedIndex() + 1, "Tarje");
                     new DetalleFactura().setVisible(true);
                     ClearVentaForm();
                     listaProd = new ArrayList();
@@ -3032,15 +3447,15 @@ public class Sistema extends javax.swing.JFrame {
                     txtMontoPagar.setText("0.00");
                     txtCambio.setText("0.00");
                 } else if (cmbtipopago.getSelectedItem() == "Mixto") {
-                    if (Double.parseDouble(txtMontoPagar.getText()) >= Double.parseDouble(lblTotal.getText()) ||
-                            Double.parseDouble(txtMontoPagar.getText()) == 0) {
+                    if (Double.parseDouble(txtMontoPagar.getText()) >= Double.parseDouble(lblTotal.getText())
+                            || Double.parseDouble(txtMontoPagar.getText()) == 0) {
                         JOptionPane.showMessageDialog(null, "Para el pago mixto\nel monto debe ser mayor a 0 y menor que el total", "Error", JOptionPane.WARNING_MESSAGE);
-                        
+
                     } else {
-                        
-                        double efectivo=Double.parseDouble(txtMontoPagar.getText());
-                        double tarjeta =total - efectivo;
-                        JOptionPane.showMessageDialog(null, "Registro de venta exitoso\nPago en efectivo: L"+efectivo+"\nSe debito de la tarjeta: L"+tarjeta);
+
+                        double efectivo = Double.parseDouble(txtMontoPagar.getText());
+                        double tarjeta = total - efectivo;
+                        JOptionPane.showMessageDialog(null, "Registro de venta exitoso\nPago en efectivo: L" + efectivo + "\nSe debito de la tarjeta: L" + tarjeta);
                         data.RegistrarVenta(vnt, cmbtipopago.getSelectedIndex() + 1, "Mixto");
                         new DetalleFactura().setVisible(true);
                         ClearVentaForm();
@@ -3057,7 +3472,7 @@ public class Sistema extends javax.swing.JFrame {
                     if (Double.parseDouble(txtCambio.getText()) < 0) {
                         JOptionPane.showMessageDialog(null, "Monto a pagar invalido", "Error", JOptionPane.WARNING_MESSAGE);
                     } else {
-                        data.RegistrarVenta(vnt, cmbtipopago.getSelectedIndex() + 1,"efe");
+                        data.RegistrarVenta(vnt, cmbtipopago.getSelectedIndex() + 1, "efe");
                         new DetalleFactura().setVisible(true);
                         ClearVentaForm();
                         listaProd = new ArrayList();
@@ -3242,6 +3657,7 @@ public class Sistema extends javax.swing.JFrame {
         limpiarTablaProducto();
         listaProductos();
         inActivProducto();
+        UsuarioAcceso();
 
     }//GEN-LAST:event_btnEliminarProductosActionPerformed
 
@@ -3280,6 +3696,7 @@ public class Sistema extends javax.swing.JFrame {
                     LimpiarTablaPrecioHistorico();
                     LimpiarTablaProductoCustom();
                     listaProductoCustom();
+                    UsuarioAcceso();
                     ////
                     java.util.Date fecha = new java.util.Date();
                     DateFormat f = new SimpleDateFormat("yyy-MM-dd");
@@ -3289,6 +3706,7 @@ public class Sistema extends javax.swing.JFrame {
 
                     pro.setId(Integer.parseInt(txtIdProductosProductos.getText()));
                     prod.UpdateProducto(pro);
+                    UsuarioAcceso();
 
                     //
                     java.util.Date fecha = new java.util.Date();
@@ -3340,6 +3758,7 @@ public class Sistema extends javax.swing.JFrame {
         txtNombreDelProducto.setText(tbProductos.getValueAt(tbProductos.getSelectedRow(), 1).toString());
         txtprecioProd.setText(tbProductos.getValueAt(tbProductos.getSelectedRow(), 2).toString());
         txtStockProd.setText(tbProductos.getValueAt(tbProductos.getSelectedRow(), 3).toString());
+        UsuarioAcceso();
 
     }//GEN-LAST:event_MouseProvedorClick
 
@@ -3510,12 +3929,14 @@ public class Sistema extends javax.swing.JFrame {
                                         txtCorreoEmpleados.setText(null);
                                     } else {
                                         ClearFormEmpleado();
+                                        UsuarioAcceso();
                                     }
 
                                 } else if (estado == "update") {
 
                                     dart.setIdEmpleado(Integer.parseInt(txtIdEmpleados.getText()));
                                     ProvDB.UpdateEmpleado(dart);
+                                    UsuarioAcceso();
                                 }
 
                             } else {
@@ -3773,6 +4194,7 @@ public class Sistema extends javax.swing.JFrame {
                                             txtCorreoProveedores.setText(null);
                                         } else {
                                             ClearFormProveedor();
+                                            UsuarioAcceso();
                                         }
 
                                     } else if (estado == "update") {
@@ -3786,6 +4208,7 @@ public class Sistema extends javax.swing.JFrame {
                                             txtCorreoProveedores.setText(null);
                                         } else {
                                             ClearFormProveedor();
+                                            UsuarioAcceso();
                                         }
 
                                     }
@@ -3883,6 +4306,7 @@ public class Sistema extends javax.swing.JFrame {
         if (state == "1") {
             cbEstadoProveedores.setSelectedIndex(3);
         }
+        UsuarioAcceso();
     }//GEN-LAST:event_MouseClickedtbProveedor
 
     private void cbEstadoProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbEstadoProveedoresActionPerformed
@@ -3977,6 +4401,30 @@ public class Sistema extends javax.swing.JFrame {
 
     private void btnGuardarCLIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarCLIActionPerformed
 
+//         if (!"".equals(txtIdClienteCLI.getText()) && !"".equals(txtNombreClienteCLI.getText()) && !"".equals(txtCorreoClienteCLI.getText()) && !"".equals(txtDireccionClienteCLI.getText()) && !"".equals(txtTelefonoClienteCLI.getText()) && !"".equals(cbEstadoCLienteCLI.getSelectedItem())) {
+//
+//            cl.setIdCliente(Integer.parseInt(txtIdClienteCLI.getText()));
+//            cl.setNombre(txtNombreClienteCLI.getText());
+//            cl.setCorreo(txtCorreoClienteCLI.getText());
+//            cl.setDireccion(txtDireccionClienteCLI.getText());
+//            cl.setIdTelefonoCli(Integer.parseInt(txtTelefonoClienteCLI.getText()));
+//            // cl.setEstado((String) cbEstadoCLienteCLI.getSelectedItem());
+//            cliente.registrarClientes(cl);
+//            JOptionPane.showMessageDialog(null, "Cliente Registrado con exito");
+//
+//            btnGuardarCLI.setEnabled(false);
+//            btnNuevoClienteCLI.setEnabled(true);
+//            btnModificarCLI.setEnabled(true);
+//            txtCorreoClienteCLI.setEnabled(false);
+//            txtDireccionClienteCLI.setEnabled(false);
+//            txtTelefonoClienteCLI.setEnabled(false);
+//            cbEstadoCLienteCLI.setEnabled(false);
+//        } else {
+//            JOptionPane.showMessageDialog(null, "Debe llenar todos los campos");
+//        }
+//
+//        limpiarTabla();
+//        listaClientes();
         String correo = txtCorreoClienteCLI.getText();
 
         if (txtNombreClienteCLI.getText().length() > 10) {
@@ -4056,11 +4504,12 @@ public class Sistema extends javax.swing.JFrame {
                                                 txtCorreoClienteCLI.setText(null);
                                             } else {
                                                 ClearClienteForm();
+                                                UsuarioAcceso();
                                             }
 
                                         } else if (estado == "update") {
                                             dart.setIdCliente(Integer.parseInt(txtIdClienteCLI.getText()));
-                                                
+
                                             if (dbClient.ValidarUpdateTelefonoCliente(txtTelefonoClienteCLI.getText(), dart.getIdCliente()) != 0) {
                                                 JOptionPane.showMessageDialog(null, "El Telefono ya esta registrado", "Error", JOptionPane.WARNING_MESSAGE);
                                                 txtTelefonoClienteCLI.setText(null);
@@ -4069,6 +4518,7 @@ public class Sistema extends javax.swing.JFrame {
                                                 txtCorreoClienteCLI.setText(null);
                                             } else {
                                                 ClearClienteForm();
+                                                UsuarioAcceso();
                                             }
                                         }
 
@@ -4127,41 +4577,11 @@ public class Sistema extends javax.swing.JFrame {
         btncancel.setVisible(false);
     }
     private void btnGuardarCLIMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarCLIMouseClicked
-        if (!"".equals(txtIdClienteCLI.getText()) && !"".equals(txtNombreClienteCLI.getText()) && !"".equals(txtCorreoClienteCLI.getText()) && !"".equals(txtDireccionClienteCLI.getText()) && !"".equals(txtTelefonoClienteCLI.getText()) && !"".equals(cbEstadoCLienteCLI.getSelectedItem())) {
 
-            cl.setIdCliente(Integer.parseInt(txtIdClienteCLI.getText()));
-            cl.setNombre(txtNombreClienteCLI.getText());
-            cl.setCorreo(txtCorreoClienteCLI.getText());
-            cl.setDireccion(txtDireccionClienteCLI.getText());
-            cl.setIdTelefonoCli(Integer.parseInt(txtTelefonoClienteCLI.getText()));
-            // cl.setEstado((String) cbEstadoCLienteCLI.getSelectedItem());
-            cliente.registrarClientes(cl);
-            JOptionPane.showMessageDialog(null, "Cliente Registrado con exito");
-
-            btnGuardarCLI.setEnabled(false);
-            btnNuevoClienteCLI.setEnabled(true);
-            btnModificarCLI.setEnabled(true);
-            txtCorreoClienteCLI.setEnabled(false);
-            txtDireccionClienteCLI.setEnabled(false);
-            txtTelefonoClienteCLI.setEnabled(false);
-            cbEstadoCLienteCLI.setEnabled(false);
-        } else {
-            JOptionPane.showMessageDialog(null, "Debe llenar todos los campos");
-        }
-
-        limpiarTabla();
-        listaClientes();
     }//GEN-LAST:event_btnGuardarCLIMouseClicked
 
     private void btnModificarCLIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarCLIActionPerformed
         // TODO add your handling code here:
-
-        estado = "update";
-        btncancel.setVisible(true);
-
-    }//GEN-LAST:event_btnModificarCLIActionPerformed
-
-    private void btnModificarCLIMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarCLIMouseClicked
         btnGuardarCLI.setEnabled(true);
         btnNuevoClienteCLI.setEnabled(false);
         btnModificarCLI.setEnabled(false);
@@ -4170,17 +4590,19 @@ public class Sistema extends javax.swing.JFrame {
         txtTelefonoClienteCLI.setEnabled(true);
         cbEstadoCLienteCLI.setEnabled(true);
         txtNombreClienteCLI.setEnabled(true);
+//
+        estado = "update";
+        btncancel.setVisible(true);
+        UsuarioAcceso();
+
+    }//GEN-LAST:event_btnModificarCLIActionPerformed
+
+    private void btnModificarCLIMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarCLIMouseClicked
+
     }//GEN-LAST:event_btnModificarCLIMouseClicked
 
     private void btnNuevoClienteCLIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoClienteCLIActionPerformed
-        tbClientesCLI.setEnabled(false);
-        txtNombreClienteCLI.setEnabled(true);
-        txtIdClienteCLI.setText("Automatico");
-        estado = "insert";
-        btncancel.setVisible(true);
-    }//GEN-LAST:event_btnNuevoClienteCLIActionPerformed
 
-    private void btnNuevoClienteCLIMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNuevoClienteCLIMouseClicked
         btnGuardarCLI.setEnabled(true);
         btnNuevoClienteCLI.setEnabled(false);
         btnModificarCLI.setEnabled(false);
@@ -4198,6 +4620,17 @@ public class Sistema extends javax.swing.JFrame {
 
         cbEstadoCLienteCLI.setSelectedItem("");
         cbEstadoCLienteCLI.setEnabled(true);
+//
+        tbClientesCLI.setEnabled(false);
+        txtNombreClienteCLI.setEnabled(true);
+        txtIdClienteCLI.setText("Automatico");
+        estado = "insert";
+        btncancel.setVisible(true);
+        UsuarioAcceso();
+    }//GEN-LAST:event_btnNuevoClienteCLIActionPerformed
+
+    private void btnNuevoClienteCLIMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNuevoClienteCLIMouseClicked
+
     }//GEN-LAST:event_btnNuevoClienteCLIMouseClicked
 
     private void mouseClickTable(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mouseClickTable
@@ -4211,7 +4644,7 @@ public class Sistema extends javax.swing.JFrame {
         if (state == "1") {
             cbEstadoCLienteCLI.setSelectedIndex(3);
         }
-
+        UsuarioAcceso();
     }//GEN-LAST:event_mouseClickTable
 
     private void cbEstadoCLienteCLIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbEstadoCLienteCLIActionPerformed
@@ -4268,13 +4701,13 @@ public class Sistema extends javax.swing.JFrame {
 
         listaProd.remove(listaProd.size() - 1);
     }//GEN-LAST:event_txtCeliminarActionPerformed
-    double montoCompra =0;
+    double montoCompra = 0;
     private void btnAgregarProductoCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarProductoCompraActionPerformed
         // TODO add your handling code here:
-         VentasDB data = new VentasDB();
+        VentasDB data = new VentasDB();
         datosProductoCompra dataProductos = new datosProductoCompra();
         int cantidad = Integer.parseInt(txtCcantidad.getText());
-        
+
         if (txtCidProducto.getText().length() > 0 && txtCcantidad.getText().length() > 0) {
 
             try {
@@ -4292,8 +4725,8 @@ public class Sistema extends javax.swing.JFrame {
 //                    System.out.println(dataProductos.getDesc());
                 //
                 data.plusStock(txtCidProducto.getText(),
-                    Integer.parseInt(txtCcantidad.getText()));
-                
+                        Integer.parseInt(txtCcantidad.getText()));
+
                 //
                 boolean addProd = true;
                 if (tbnuevacompra.getRowCount() > 0) {
@@ -4364,7 +4797,6 @@ public class Sistema extends javax.swing.JFrame {
                 if (txtCompraTipoPago.getSelectedItem() != "Tarjeta") {
                     txtCCambio.setText((montoCompra - totalCompra) + "");
                 }
-                
 
                 limpiarVenta();
             } catch (Exception ex) {
@@ -4382,32 +4814,31 @@ public class Sistema extends javax.swing.JFrame {
 
     private void txtCcantidadKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCcantidadKeyReleased
         // TODO add your handling code here:
-       String cantidad = txtCcantidad.getText();
+        String cantidad = txtCcantidad.getText();
         if (Character.isDigit(evt.getKeyChar()) == true) {
             String id = txtCcantidad.getText();
-        if ("0".equals(txtCcantidad.getText()) || txtCcantidad.getText().startsWith("-") || txtCcantidad.getText().startsWith(".")) {
-            txtCcantidad.setText(null);
-        } else if (id.contains(".")) {
+            if ("0".equals(txtCcantidad.getText()) || txtCcantidad.getText().startsWith("-") || txtCcantidad.getText().startsWith(".")) {
+                txtCcantidad.setText(null);
+            } else if (id.contains(".")) {
 
-            id = id.substring(0, id.length() - 1);
+                id = id.substring(0, id.length() - 1);
 
-            txtCcantidad.setText(id);
+                txtCcantidad.setText(id);
 
-        } else {
-            double cant = Double.parseDouble(txtCcantidad.getText());
-            double precio = Double.parseDouble(txtCprecio.getText());
-            double total = cant * precio;
-            txtCtotal.setText(total + "");
+            } else {
+                double cant = Double.parseDouble(txtCcantidad.getText());
+                double precio = Double.parseDouble(txtCprecio.getText());
+                double total = cant * precio;
+                txtCtotal.setText(total + "");
 
-        }
+            }
         } else {
             cantidad = cantidad.substring(0, cantidad.length() - 1);
 
             txtCcantidad.setText(cantidad);
         }
-        
-       
-        
+
+
     }//GEN-LAST:event_txtCcantidadKeyReleased
 
     private void txtCcantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCcantidadActionPerformed
@@ -4620,7 +5051,7 @@ public class Sistema extends javax.swing.JFrame {
 
     private void txtidProveedorCompraKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtidProveedorCompraKeyReleased
         // TODO add your handling code here:
-       DatosCliente cliente = new DatosCliente();
+        DatosCliente cliente = new DatosCliente();
         ConexionSQL cn = new ConexionSQL();
         Connection con = null;
         PreparedStatement ps = null;
@@ -4636,7 +5067,7 @@ public class Sistema extends javax.swing.JFrame {
                 rs = ps.executeQuery();
                 if (rs.next()) {
                     txtCompraNombreProveedor.setText(rs.getString("Nombre"));
-                     cliente.setDireccion(rs.getString("Direccion"));
+                    cliente.setDireccion(rs.getString("Direccion"));
                     cliente.setTelefono(rs.getString("TelefonoPro"));
 
                 } else {
@@ -4650,18 +5081,18 @@ public class Sistema extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_txtidProveedorCompraKeyReleased
-   public static String Operacion = "";
+    public static String Operacion = "";
 
-    public  String getOperacion() {
+    public String getOperacion() {
         return Operacion;
     }
 
-    public  void setOperacion(String Operacion) {
+    public void setOperacion(String Operacion) {
         Sistema.Operacion = Operacion;
     }
     private void btnCfacturarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCfacturarActionPerformed
         // TODO add your handling code here:
-       Operacion ="compra";
+        Operacion = "compra";
         valoresEstaticos vals = new valoresEstaticos();
 //        if (txtidProveedorCompra.getText().length() > 0 && txtCompraNombreProveedor.getText().length() > 2) {
 //
@@ -4716,7 +5147,7 @@ public class Sistema extends javax.swing.JFrame {
                 DatosCliente cliente = new DatosCliente();
 
                 cliente.setCliente(txtCompraNombreProveedor.getText());
-               
+
                 cliente.setIdCliente(Integer.parseInt(txtidProveedorCompra.getText()));
                 cliente.setEmpleado(vals.getIdUsuario() + "");
                 String str = lblcompraTotal.getText();
@@ -4731,7 +5162,7 @@ public class Sistema extends javax.swing.JFrame {
                 vnt.setTotal(Double.parseDouble(lblcompraTotal.getText()));
                 vnt.setCambio(Double.parseDouble(txtCCambio.getText()));
 
-              ComprasDB data = new ComprasDB();
+                ComprasDB data = new ComprasDB();
                 if (txtCompraTipoPago.getSelectedItem() == "Tarjeta") {
                     txtCCambio.setText("0.00");
                     txtCMontoPagar.setText("0.00");
@@ -4744,7 +5175,7 @@ public class Sistema extends javax.swing.JFrame {
                     limpiarCompra();
                     LimpiarTablaCompra();
                 } else if (txtCompraTipoPago.getSelectedItem() == "Mixto") {
-                    if (Double.parseDouble(txtCMontoPagar.getText()) >= Double.parseDouble(lblcompraTotal.getText()) || Double.parseDouble(txtCMontoPagar.getText())<=0) {
+                    if (Double.parseDouble(txtCMontoPagar.getText()) >= Double.parseDouble(lblcompraTotal.getText()) || Double.parseDouble(txtCMontoPagar.getText()) <= 0) {
                         JOptionPane.showMessageDialog(null, "Para el pago mixto\nel monto debe ser menor que el total", "Error", JOptionPane.WARNING_MESSAGE);
 
                     } else {
@@ -4845,7 +5276,7 @@ public class Sistema extends javax.swing.JFrame {
 
             //convertir nombre
         }
-         String precio = txtprecioProd.getText();
+        String precio = txtprecioProd.getText();
         if (Character.isDigit(evt.getKeyChar()) == true) {
 
         } else {
@@ -4853,8 +5284,7 @@ public class Sistema extends javax.swing.JFrame {
 
             txtprecioProd.setText(precio);
         }
-        
-        
+
 
     }//GEN-LAST:event_txtprecioProdKeyReleased
 
@@ -4870,7 +5300,7 @@ public class Sistema extends javax.swing.JFrame {
             txtStockProd.setText(id);
 
         }
-         String stock = txtStockProd.getText();
+        String stock = txtStockProd.getText();
         if (Character.isDigit(evt.getKeyChar()) == true) {
 
         } else {
@@ -4878,10 +5308,8 @@ public class Sistema extends javax.swing.JFrame {
 
             txtStockProd.setText(stock);
         }
-        
-        
-        
-        
+
+
     }//GEN-LAST:event_txtStockProdKeyReleased
 
     private void txtNombreClienteCLIKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreClienteCLIKeyTyped
@@ -5018,7 +5446,7 @@ public class Sistema extends javax.swing.JFrame {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
-        panelInfo.setSelectedIndex(7);
+        
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -5249,7 +5677,7 @@ public class Sistema extends javax.swing.JFrame {
     double monto = 0;
     private void txtMontoPagarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMontoPagarKeyReleased
         // TODO add your handling code here:
-         String Monto = txtCMontoPagar.getText();
+        String Monto = txtCMontoPagar.getText();
 
         if (txtCMontoPagar.getText().startsWith("-") || txtCMontoPagar.getText().startsWith(".") || txtCMontoPagar.getText().startsWith("0")) {
             txtCMontoPagar.setText(null);
@@ -5279,7 +5707,7 @@ public class Sistema extends javax.swing.JFrame {
     }//GEN-LAST:event_cmbTipoFiltroClienteActionPerformed
 
     private void txtNombreDelProductoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreDelProductoKeyReleased
-       String nombre = txtNombreDelProducto.getText();
+        String nombre = txtNombreDelProducto.getText();
         if (Character.isDigit(evt.getKeyChar()) == false) {
 
             String id = txtNombreDelProducto.getText();
@@ -5312,7 +5740,7 @@ public class Sistema extends javax.swing.JFrame {
 
     private void txtCompraTipoPagoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_txtCompraTipoPagoItemStateChanged
         // TODO add your handling code here:
-         if (txtCompraTipoPago.getSelectedItem() == "Tarjeta") {
+        if (txtCompraTipoPago.getSelectedItem() == "Tarjeta") {
 
             txtCMontoPagar.setEnabled(false);
             txtCMontoPagar.setText("0.00");
@@ -5325,6 +5753,11 @@ public class Sistema extends javax.swing.JFrame {
             txtCCambio.setText((0 - totalCompra) + "");
         }
     }//GEN-LAST:event_txtCompraTipoPagoItemStateChanged
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        panelInfo.setSelectedIndex(7);
+    }//GEN-LAST:event_jButton1ActionPerformed
     private static boolean isNumeric(String cadena) {
         try {
             Integer.parseInt(cadena);

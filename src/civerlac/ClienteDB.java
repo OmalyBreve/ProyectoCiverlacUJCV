@@ -11,15 +11,17 @@ import java.util.Set;
 import javax.swing.JOptionPane;
 
 public class ClienteDB {
-
+    
     ConexionSQL cn = new ConexionSQL();
     Connection con = null;
     PreparedStatement ps = null;
     ResultSet rs = null;
     
+     ErrorLogs el = new ErrorLogs();
      public boolean ValidarTelefonoCliente(String telefono) {
 
         String sql = "Select * from cliente where  idTelefonoCli= ?";
+       
 
         try {
             con = cn.getConnection();
@@ -27,12 +29,15 @@ public class ClienteDB {
             ps.setString(1, telefono);
             rs= ps.executeQuery();
             if(rs.next()){
+                el.LogBitacora("La validacion de telefono cliente tuvo exito");
                 return true;
+                
             }else{
                 return false;
             }
             
         } catch (SQLException e) {
+            el.LogBitacora("Error al validar telefono cliente" + e); 
            
             return false;
         }
@@ -54,6 +59,7 @@ public class ClienteDB {
             String estado = rs.getString("Estado");
             System.out.println(estado);
             if( "1".equals(estado) ){
+                
                 return 1;
             }
             else{
@@ -83,9 +89,10 @@ public class ClienteDB {
             ps.setInt(5, cl.getEstado());
             ps.execute();
             JOptionPane.showMessageDialog(null, "Registro Exitoso");
+            el.LogBitacora("Registrar clientes tuvo exito");
             return true;
         } catch (SQLException e) {
-           
+           el.LogBitacora("Error al registrar clientes" + e);
             return false;
         }
 
@@ -107,9 +114,11 @@ public class ClienteDB {
             ps.setInt(6, cl.getIdCliente());
             ps.execute();
             JOptionPane.showMessageDialog(null, "Registro actualizado correctamente");
+            el.LogBitacora("Update clientes tuvo exito");
             return true;
         } catch (SQLException e) {
 //            JOptionPane.showMessageDialog(null, e.toString());
+           el.LogBitacora("Error al update clientes " + e );
             return false;
         }
 
@@ -150,8 +159,10 @@ public class ClienteDB {
                 listaCL.add(cl);
 
             }
+            el.LogBitacora("Listar cliente busqueda tuvo exito");
         } catch (SQLException e) {
             System.out.println(e.toString());
+            el.LogBitacora("Error al listar cliente busqueda" + e);
         }
         return listaCL;
     }
@@ -177,13 +188,17 @@ public class ClienteDB {
                 listaCL.add(cl);
 
             }
+            el.LogBitacora("Listado de clientes con exito");
+            el.LogBitacora("Listar clientes tuvo exito");
         } catch (SQLException e) {
             System.out.println(e.toString());
+            el.LogBitacora("Error al seleccionar los clientes " + e);
+            
         }
         return listaCL;
     }
 
-    //
+    
     public List listarProveedorBusqueda(String filtro, String dato) {
 
         String sql = null;
@@ -219,12 +234,14 @@ public class ClienteDB {
                 listaCL.add(cl);
 
             }
+            el.LogBitacora("Listar proveedor busqueda tuvo exito");
         } catch (SQLException e) {
             System.out.println(e.toString());
+            el.LogBitacora("Error al listar proveedor busqueda" + e);
         }
         return listaCL;
     }
-    //insert EmpresaParam
+    
      public boolean UpdateDatosNegocio(String nombre,String direc,String tel,String rtn,String cai) {
 
         String sql = "UPDATE  `datosEmpresa` set  `Nombre`=?, `Direccion`=?, `Telefono`=?, `RTN`=?, `CAI`=?";
@@ -240,9 +257,11 @@ public class ClienteDB {
             ps.setString(5, cai);
             ps.execute();
 //            JOptionPane.showMessageDialog(null, "Registro actualizado correctamente");
+           el.LogBitacora("Update datos negocio tuvo exito");
             return true;
         } catch (SQLException e) {
            JOptionPane.showMessageDialog(null, e.toString());
+           el.LogBitacora("Error al update datos negocio" + e);
             return false;
         }
 

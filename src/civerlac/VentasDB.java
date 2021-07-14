@@ -23,6 +23,7 @@ public class VentasDB {
     Connection con = null;
     PreparedStatement ps = null;
     ResultSet rs = null;
+    ErrorLogs el = new ErrorLogs();
 
    public boolean RegistrarVenta(Ventas cl, int formaPago,String tipoPago) {
 
@@ -43,11 +44,14 @@ public class VentasDB {
             else{
                 JOptionPane.showMessageDialog(null, "Registro de venta exitoso");
             }
+            el.LogBitacora("Se registro una nueva venta");
             
             return true;
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "No venta" + e.toString());
+            el.LogBitacora("La venta no tuvo exito" + e);
             return false;
+            
         }
 
     }
@@ -64,11 +68,14 @@ public class VentasDB {
             if (rs.next()) {
 
                 cantidadStock = ((rs.getInt("stock")));
+                
             }
+            el.LogBitacora("La validacion de stock funciono correctamente");
         } catch (SQLException e) {
             System.out.println(e.toString());
+            el.LogBitacora("Error al validar el stock" + e);
         }
-
+        
         return cantidadStock;
     }
 
@@ -120,10 +127,11 @@ public class VentasDB {
             ps.setString(4, cant);
             ps.setString(5, total);
             ps.execute();
-
+            el.LogBitacora("Se registro una nueva factura");
             return true;
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "No se registra el producto" + e.toString());
+            el.LogBitacora("Error al registrar la factura" + e);
             return false;
         }
 
@@ -154,11 +162,14 @@ public class VentasDB {
                 cl.setEmpleado((rs.getString("Vendedor")));
                 cl.setTotal((rs.getDouble("total")));
                 listaProd.add(cl);
-
+                
             }
+            el.LogBitacora("Se listo con exito el historial de venta");
         } catch (SQLException e) {
             System.out.println(e.toString());
+            el.LogBitacora("Error al listar el historial de venta" + e);
         }
+        
         return listaProd;
     }
 
@@ -236,8 +247,10 @@ public class VentasDB {
                 listaProd.add(cl);
 
             }
+            el.LogBitacora("Se listo el historial de factura con exito");
         } catch (SQLException e) {
             System.out.println(e.toString());
+            el.LogBitacora("Error al listar historial de venta de factura" + e);
         }
         return listaProd;
     }
@@ -312,8 +325,10 @@ public class VentasDB {
                 listaCL.add(cl);
 
             }
+            el.LogBitacora("Listar venta busqueda tuvo exito");
         } catch (SQLException e) {
             System.out.println(e.toString());
+            el.LogBitacora("Error al listar venta busqueda");
         }
         return listaCL;
     }

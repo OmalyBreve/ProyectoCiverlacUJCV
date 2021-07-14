@@ -16,6 +16,7 @@ public class EmpleadosDB {
     Connection con = null;
     PreparedStatement ps = null;
     ResultSet rs = null;
+    ErrorLogs el = new ErrorLogs();
     public boolean ValidarTelefonoEmpleado(String telefono) {
 
         String sql = "Select * from empleado where TelefonoPro= ? ";
@@ -27,13 +28,14 @@ public class EmpleadosDB {
             rs= ps.executeQuery();
             if(rs.next()){
                 System.out.println("El telefono Existe");
+                el.LogBitacora("Validar telefono empelado tuvo exito");
                 return true;
             }else{
                 return false;
             }
             
         } catch (SQLException e) {
-           
+           el.LogBitacora("Error al validar telefono empleado" + e);
             return false;
         }
         
@@ -55,9 +57,11 @@ public class EmpleadosDB {
             ps.setInt(6, cl.getEstado());
             ps.execute();
             JOptionPane.showMessageDialog(null, "Registro exitoso");
+            el.LogBitacora("Registrar empleado tuvo exito");
             return true;
         } catch (SQLException e) {
             //JOptionPane.showMessageDialog(null, e.toString());
+            el.LogBitacora("Error al registrar empleado" + e);
             return false;
         }
 
@@ -80,9 +84,11 @@ public class EmpleadosDB {
             ps.setInt(7, cl.getIdEmpleado());
             ps.execute();
             JOptionPane.showMessageDialog(null, "Registro actualizado correctamente");
+            el.LogBitacora("Update empleado tuvo exito");
             return true;
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e.toString());
+            el.LogBitacora("Error al update empleado" + e);
             return false;
         }
 
@@ -108,10 +114,14 @@ public class EmpleadosDB {
                 cl.setTelefono(rs.getInt("idTelefonoEmp"));
                 cl.setEstado(rs.getInt("Estado"));
                 listaCL.add(cl);
-
+                
             }
+            el.LogBitacora("Listar empleados tuvo exito");
+
         } catch (SQLException e) {
             System.out.println(e.toString());
+            el.LogBitacora("Error al listar empleados "+ e);
+            
         }
         return listaCL;
     }
@@ -152,8 +162,10 @@ public class EmpleadosDB {
                 listaCL.add(cl);
 
             }
+            el.LogBitacora("Listar cliente busqueda tuvo exito");
         } catch (SQLException e) {
             System.out.println(e.toString());
+            el.LogBitacora("Error al listar cliente busqueda" + e);
         }
         return listaCL;
     }

@@ -23,10 +23,12 @@ public class ComprasDB {
     Connection con = null;
     PreparedStatement ps = null;
     ResultSet rs = null;
+    ErrorLogs el = new ErrorLogs();
 
     public void AumetarStock(String id, int cantidad) {
         String sql = "update producto set stock =(stock+?) where idProducto=?";
         int cantidadStock = 0;
+       
 
         try {
             con = cn.getConnection();
@@ -34,14 +36,16 @@ public class ComprasDB {
             ps.setInt(1, cantidad);
             ps.setString(2, id);
             ps.execute();
+            el.LogBitacora("Aumentar stock tuvo exito");
 
         } catch (SQLException e) {
             System.out.println(e.toString());
+            el.LogBitacora("Error al aumentar stock" + e);
         }
 
     }
 
-    ///
+    
     public boolean RegistrarCompra(int vendedor, int proveedor, int formaPago, double total) {
 
         String sql = "INSERT INTO `facturacompra`( `Fecha`, `FkVendedor`,`FkProveedor`, `Formapago`,`Total`) VALUES (?,?,?,?,?)";
@@ -60,9 +64,11 @@ public class ComprasDB {
             ps.setDouble(5, total);
             ps.execute();
             JOptionPane.showMessageDialog(null, "Registro de compra exitoso");
+            el.LogBitacora("Resgistrar compra tuvo exito");
             return true;
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "No venta" + e.toString());
+            el.LogBitacora("Error al registrar la venta"+ e);
             return false;
         }
 
@@ -78,13 +84,15 @@ public class ComprasDB {
             ps.setInt(1, cantidad);
             ps.setString(2, id);
             ps.execute();
+            el.LogBitacora("Reducir stock tuvo exito");
 
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e.toString());
+            el.LogBitacora("Error al reducir stock" + e);
         }
 
     }
-     /////
+     
     public boolean RegistrarCompra(Ventas cl, int formaPago,String tipoPago) {
 
         String sql = "INSERT INTO `Compras`( `Proveedor`, `Vendedor`, `total`,`formapago`,`cambio`) VALUES (?,?,?,?,?)";
@@ -104,16 +112,18 @@ public class ComprasDB {
             else{
                 JOptionPane.showMessageDialog(null, "Registro de venta exitoso");
             }
-            
+            el.LogBitacora("Registrar compra tuvo exito");
             return true;
+            
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "No venta" + e.toString());
+            el.LogBitacora("Error al registrar venta" + e);
             return false;
         }
         
 
     }
-    ////
+    
     public boolean RegistrarDetalleCompra(String id, String idPro, String cant, String total, String fecha) {
 
         String sql = "INSERT INTO `detalleCompra`( `idFactura`,`idProducto`,`cant`,`total`) VALUES (?,?,?,?)";
@@ -128,10 +138,12 @@ public class ComprasDB {
             ps.setString(3, cant);
             ps.setString(4, total);
             ps.execute();
-
+            el.LogBitacora("Registrar detalle compra tuvo exito");
             return true;
+            
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "No se registra el producto" + e.toString());
+            el.LogBitacora("Error al registrar detalle compra" + e);
             return false;
         }
 

@@ -7,7 +7,7 @@ package civerlac;
 
 /**
  *
- * @author Roger Sifontes
+ * @author Omaly Breve
  */
 public class Civerlac {
 
