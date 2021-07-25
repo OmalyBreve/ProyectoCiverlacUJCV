@@ -24,7 +24,7 @@ public class ErrorLogs {
     public void LogBitacora(String error) {
         java.util.Date fecha = new java.util.Date();
         DateFormat f = new SimpleDateFormat("yyy-MM-dd"); // hra min seg 
-        String fileName = ".//Logs\\RegistroLog" + f.format(fecha) + ".txt";
+        String fileName = ".//Logs\\RegistroLog" + f.format(fecha) + ".txt";// se indica guardar el archivo unicamente en txt
 
         try {
 

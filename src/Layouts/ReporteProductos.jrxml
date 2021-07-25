@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="97f45f8e-17cc-430d-b4f2-3c0cb8999809">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select idProducto,Nombre,precio,stock,(select  b.Nombre from bitacoralogin as a join
+Empleado as b on a.Usuario=B.idEmpleado 
+order by a.idLog DESC
+limit 1) as Empleado from producto]]>
+	</queryString>
+	<field name="idProducto" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Nombre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="precio" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="stock" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Empleado" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="119" splitType="Stretch">
+			<staticText>
+				<reportElement x="121" y="11" width="340" height="35" forecolor="#003333" uuid="7f2f8b9e-f125-4177-b456-88823a3f5afe"/>
+				<textElement>
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[REPORTE DE PRODUCTOS]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="396" y="56" width="100" height="20" forecolor="#003333" uuid="73222f8b-39f1-4a5c-8f92-748ea8a4c0dc"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="259" y="56" width="137" height="24" forecolor="#003333" uuid="4b42fe6d-04e5-4276-9200-1f1957c6be1a"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FECHA DE IMPRESION:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="259" y="89" width="137" height="24" forecolor="#003333" uuid="a7fcd5c9-f83d-4f99-99b2-84b53e1a2fa1"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[HORA DE IMPRESION:]]></text>
+			</staticText>
+			<textField pattern="h.mm a">
+				<reportElement x="396" y="89" width="133" height="20" forecolor="#003333" uuid="dfa3a31d-6008-43ec-a6ed-dd774b177f52"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="13" y="56" width="171" height="52" uuid="d0ff0c26-e799-48d0-95fc-ae2438170488"/>
+				<imageExpression><![CDATA["C:\\Users\\Omaly Breve\\Desktop\\Civerlac\\src\\Img\\LOGO PEQUENO.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="11" width="555" height="2" uuid="c87bec50-85e3-4581-8e20-98b29b2bf4f8"/>
+			</line>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="33" splitType="Stretch">
+			<staticText>
+				<reportElement x="84" y="4" width="82" height="20" forecolor="#003333" uuid="b66504b9-04ff-44a3-aa7c-2b885387a9e4"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Codigo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="166" y="4" width="131" height="20" forecolor="#003333" uuid="ecff5e83-d33a-4241-a3ec-61ec75e10c91"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="297" y="4" width="82" height="20" forecolor="#003333" uuid="6b8786a2-c473-4929-8797-de9227614c45"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Precio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="379" y="4" width="82" height="20" forecolor="#003333" uuid="e9cf220f-2a0c-4869-a0df-31b2033af5fc"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Almacen]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="24" splitType="Stretch">
+			<textField>
+				<reportElement x="84" y="4" width="82" height="20" uuid="2c27d7b2-0a4e-410b-893b-153164d82213"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{idProducto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="166" y="4" width="131" height="20" uuid="571b1cfd-b5c9-49af-9f37-5f44c6a5a9db"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="297" y="4" width="82" height="20" uuid="5af2fe8a-44ee-4655-aaba-24bd3340dd71"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{precio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="379" y="4" width="82" height="20" uuid="ca5692a1-e6ac-4f28-a6da-04b30424edb6"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{stock}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="356" y="30" width="94" height="24" forecolor="#003333" uuid="9f3ceb01-3e1a-4787-9780-0015e73c08dd"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Impreso por:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="450" y="30" width="100" height="20" forecolor="#003333" uuid="24e796f4-3f86-42f2-952b-14e3238f19a1"/>
+				<textElement>
+					<font size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Empleado}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="236" y="30" width="80" height="20" uuid="94c7adad-d281-4cd7-94c6-8195320ebee6"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Pag "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="316" y="30" width="40" height="20" uuid="7090de4d-2f3d-419d-9440-28e2dd966b51"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

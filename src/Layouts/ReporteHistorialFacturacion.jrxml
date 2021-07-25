@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="008c6062-f80c-4ec8-8dd5-40730422b389">
+	<property name="ireport.zoom" value="1.9487171000000014"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select DISTINCT a.idFactura,b.fechaEmision,c.Nombre as Vendedor,e.Nombre as Cliente,(select  b.Nombre from bitacoralogin as a join
+Empleado as b on a.Usuario=B.idEmpleado 
+order by a.idLog DESC
+limit 1) as Empleado from factura as a join facturaproducto as b on a.idFactura=b.idFactura join empleado as c on a.Vendedor=c.idEmpleado join cliente as e on a.Cliente=e.idCliente]]>
+	</queryString>
+	<field name="idFactura" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fechaEmision" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Vendedor" class="java.lang.String"/>
+	<field name="Cliente" class="java.lang.String"/>
+	<field name="Empleado" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="116" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="413" y="64" width="100" height="20" forecolor="#003333" uuid="e85c99bc-abcf-4fb4-b1e6-62673dd0b9b4"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="12" y="13" width="543" height="35" forecolor="#003333" uuid="80f6ccbd-6296-4d61-b96e-e7a3934ea897"/>
+				<textElement>
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[REPORTE DE HISTORIAL DE FACTURACION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="276" y="64" width="137" height="24" forecolor="#003333" uuid="01f447a2-666b-452e-8120-2b4a01b6db58"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FECHA DE IMPRESION:]]></text>
+			</staticText>
+			<textField pattern="h.mm a">
+				<reportElement x="413" y="88" width="133" height="20" forecolor="#003333" uuid="4dd01e62-56ad-4e4e-ae49-88414e6127fa"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="276" y="88" width="137" height="24" forecolor="#003333" uuid="4d29db44-4d4c-4d31-b266-5f66c129b2e1"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[HORA DE IMPRESION:]]></text>
+			</staticText>
+			<image>
+				<reportElement x="12" y="64" width="171" height="52" uuid="519fcc70-cdb9-4d6d-a8e1-cd48e4d994ec"/>
+				<imageExpression><![CDATA["C:\\Users\\Omaly Breve\\Desktop\\Civerlac\\src\\Img\\LOGO PEQUENO.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="14" width="555" height="1" uuid="d918ffda-1c90-4a82-979a-644aef562c19"/>
+			</line>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="25" splitType="Stretch">
+			<staticText>
+				<reportElement x="25" y="1" width="138" height="20" forecolor="#003333" uuid="974013b4-7e03-40f8-9a9b-9c9daa50142b"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Codigo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="163" y="1" width="138" height="20" forecolor="#003333" uuid="9f4d8708-0563-46ca-8585-68f8cfabb570"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha de emision]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="301" y="1" width="138" height="20" forecolor="#003333" uuid="32308fa7-66a6-4e59-a400-21c3ab20b631"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Vendedor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="439" y="1" width="138" height="20" forecolor="#003333" uuid="917d5834-f624-4745-939f-9864d2a40bcc"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cliente]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement x="25" y="1" width="138" height="20" uuid="c0475fef-4770-4f7d-ad2b-1cba304f8adb"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{idFactura}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="163" y="1" width="138" height="20" uuid="f2a3efb5-a122-4027-b70a-c19754c2e46e"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fechaEmision}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="301" y="1" width="138" height="20" uuid="df48b0ba-ebad-4ff3-bf7e-53364c553919"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Vendedor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="439" y="1" width="138" height="20" uuid="c554d525-98b2-4f5a-9d8e-995a16e58a1a"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Cliente}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<staticText>
+				<reportElement x="355" y="19" width="94" height="24" forecolor="#003333" uuid="f65f2cc5-9e63-4464-896d-d8c2dc45fe66"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Impreso por:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="449" y="19" width="100" height="20" forecolor="#003333" uuid="62c49648-08ed-4f9e-ad74-d8776c72f2a1"/>
+				<textElement>
+					<font size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Empleado}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="301" y="19" width="40" height="20" uuid="44f352ca-e588-457b-80ff-47abed0820f8"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="221" y="19" width="80" height="20" uuid="e89e8f98-aac6-4175-9d7d-20ec205bd955"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Pag "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -858,6 +858,7 @@ public class Sistema extends javax.swing.JFrame {
         ClienteBuscar = new javax.swing.JButton();
         ClienteBuscar1 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
+        btnCreport = new javax.swing.JButton();
         tabProveedores = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
@@ -884,6 +885,7 @@ public class Sistema extends javax.swing.JFrame {
         cmbproveedor = new javax.swing.JComboBox<>();
         refreshProveedores = new javax.swing.JButton();
         jLabel55 = new javax.swing.JLabel();
+        btnReporteVendedores = new javax.swing.JButton();
         tabEmpleados = new javax.swing.JPanel();
         jLabel30 = new javax.swing.JLabel();
         jLabel31 = new javax.swing.JLabel();
@@ -913,6 +915,7 @@ public class Sistema extends javax.swing.JFrame {
         cmbempleado = new javax.swing.JComboBox<>();
         btnEliminarNV2 = new javax.swing.JButton();
         jLabel56 = new javax.swing.JLabel();
+        btnReporteEmpleados = new javax.swing.JButton();
         tabProductos = new javax.swing.JPanel();
         jLabel25 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
@@ -930,6 +933,7 @@ public class Sistema extends javax.swing.JFrame {
         btnInsert = new javax.swing.JButton();
         btnProdCancelar = new javax.swing.JButton();
         jLabel62 = new javax.swing.JLabel();
+        btnReporteProductos = new javax.swing.JButton();
         tabHistorial = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
         tbVentas = new javax.swing.JTable();
@@ -1011,6 +1015,7 @@ public class Sistema extends javax.swing.JFrame {
         btnrefreshfactura = new javax.swing.JButton();
         jLabel50 = new javax.swing.JLabel();
         jLabel58 = new javax.swing.JLabel();
+        btnReporteHFacturacion = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane9 = new javax.swing.JScrollPane();
         tbPHproducto = new javax.swing.JTable();
@@ -1019,6 +1024,7 @@ public class Sistema extends javax.swing.JFrame {
         jScrollPane11 = new javax.swing.JScrollPane();
         tbPHhistorialprecio = new javax.swing.JTable();
         jLabel57 = new javax.swing.JLabel();
+        btnPrecioHistorico = new javax.swing.JButton();
         btnNuevaVenta = new javax.swing.JButton();
         btnClientes = new javax.swing.JButton();
         btnProveedores = new javax.swing.JButton();
@@ -1255,25 +1261,22 @@ public class Sistema extends javax.swing.JFrame {
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("By: CiverlacTeam©");
 
+        btnCreport.setBackground(new java.awt.Color(0, 153, 153));
+        btnCreport.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnCreport.setForeground(new java.awt.Color(255, 255, 255));
+        btnCreport.setText("Generar Reporte");
+        btnCreport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCreportActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout tabClientesLayout = new javax.swing.GroupLayout(tabClientes);
         tabClientes.setLayout(tabClientesLayout);
         tabClientesLayout.setHorizontalGroup(
             tabClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tabClientesLayout.createSequentialGroup()
                 .addGroup(tabClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(tabClientesLayout.createSequentialGroup()
-                        .addGap(123, 123, 123)
-                        .addComponent(jLabel17)
-                        .addGap(143, 143, 143)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cmbTipoFiltroCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(14, 14, 14)
-                        .addComponent(txtsearch, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addComponent(ClienteBuscar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ClienteBuscar1))
                     .addGroup(tabClientesLayout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addGroup(tabClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1314,8 +1317,24 @@ public class Sistema extends javax.swing.JFrame {
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 715, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(tabClientesLayout.createSequentialGroup()
                         .addGap(937, 937, 937)
-                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(12, 12, 12))
+                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(tabClientesLayout.createSequentialGroup()
+                        .addGap(123, 123, 123)
+                        .addComponent(jLabel17)
+                        .addGap(143, 143, 143)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cmbTipoFiltroCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(14, 14, 14)
+                        .addComponent(txtsearch, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(ClienteBuscar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ClienteBuscar1))
+                    .addGroup(tabClientesLayout.createSequentialGroup()
+                        .addGap(900, 900, 900)
+                        .addComponent(btnCreport, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         tabClientesLayout.setVerticalGroup(
             tabClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1381,7 +1400,9 @@ public class Sistema extends javax.swing.JFrame {
                             .addComponent(btnGuardarCLI, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btncancel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnCreport)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                 .addComponent(jLabel8)
                 .addContainerGap())
         );
@@ -1617,6 +1638,17 @@ public class Sistema extends javax.swing.JFrame {
         jLabel55.setForeground(new java.awt.Color(255, 255, 255));
         jLabel55.setText("By: CiverlacTeam©");
         tabProveedores.add(jLabel55, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 610, 120, -1));
+
+        btnReporteVendedores.setBackground(new java.awt.Color(0, 153, 153));
+        btnReporteVendedores.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnReporteVendedores.setForeground(new java.awt.Color(255, 255, 255));
+        btnReporteVendedores.setText("Generar Reporte");
+        btnReporteVendedores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReporteVendedoresActionPerformed(evt);
+            }
+        });
+        tabProveedores.add(btnReporteVendedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(883, 530, 150, -1));
 
         panelInfo.addTab("Proveedores", tabProveedores);
 
@@ -1868,6 +1900,17 @@ public class Sistema extends javax.swing.JFrame {
         jLabel56.setText("By: CiverlacTeam©");
         tabEmpleados.add(jLabel56, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 610, 110, -1));
 
+        btnReporteEmpleados.setBackground(new java.awt.Color(0, 153, 153));
+        btnReporteEmpleados.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnReporteEmpleados.setForeground(new java.awt.Color(255, 255, 255));
+        btnReporteEmpleados.setText("Generar Reporte");
+        btnReporteEmpleados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReporteEmpleadosActionPerformed(evt);
+            }
+        });
+        tabEmpleados.add(btnReporteEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 540, 170, -1));
+
         panelInfo.addTab("Empleados", tabEmpleados);
 
         tabProductos.setBackground(new java.awt.Color(0, 153, 153));
@@ -2008,6 +2051,16 @@ public class Sistema extends javax.swing.JFrame {
         jLabel62.setForeground(new java.awt.Color(255, 255, 255));
         jLabel62.setText("By: CiverlacTeam©");
 
+        btnReporteProductos.setBackground(new java.awt.Color(0, 153, 153));
+        btnReporteProductos.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnReporteProductos.setForeground(new java.awt.Color(255, 255, 255));
+        btnReporteProductos.setText("Generear Reporte");
+        btnReporteProductos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReporteProductosActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout tabProductosLayout = new javax.swing.GroupLayout(tabProductos);
         tabProductos.setLayout(tabProductosLayout);
         tabProductosLayout.setHorizontalGroup(
@@ -2049,7 +2102,9 @@ public class Sistema extends javax.swing.JFrame {
                                 .addGap(218, 218, 218))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabProductosLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel62, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(tabProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel62, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnReporteProductos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
         tabProductosLayout.setVerticalGroup(
@@ -2075,7 +2130,9 @@ public class Sistema extends javax.swing.JFrame {
                     .addComponent(txtIdProductosProductos))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnReporteProductos)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                 .addComponent(jLabel62)
                 .addContainerGap())
         );
@@ -2806,6 +2863,17 @@ public class Sistema extends javax.swing.JFrame {
         jLabel58.setText("By: CiverlacTeam©");
         jPanel2.add(jLabel58, new org.netbeans.lib.awtextra.AbsoluteConstraints(957, 610, 120, -1));
 
+        btnReporteHFacturacion.setBackground(new java.awt.Color(0, 153, 153));
+        btnReporteHFacturacion.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnReporteHFacturacion.setForeground(new java.awt.Color(255, 255, 255));
+        btnReporteHFacturacion.setText("Generar Reporte");
+        btnReporteHFacturacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReporteHFacturacionActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnReporteHFacturacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 540, 160, -1));
+
         panelInfo.addTab("Historial De Facturación", jPanel2);
 
         jPanel3.setBackground(new java.awt.Color(0, 153, 153));
@@ -2861,6 +2929,17 @@ public class Sistema extends javax.swing.JFrame {
         jLabel57.setForeground(new java.awt.Color(255, 255, 255));
         jLabel57.setText("By: CiverlacTeam©");
         jPanel3.add(jLabel57, new org.netbeans.lib.awtextra.AbsoluteConstraints(957, 610, 120, -1));
+
+        btnPrecioHistorico.setBackground(new java.awt.Color(0, 153, 153));
+        btnPrecioHistorico.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnPrecioHistorico.setForeground(new java.awt.Color(255, 255, 255));
+        btnPrecioHistorico.setText("Generar Reporte");
+        btnPrecioHistorico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPrecioHistoricoActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnPrecioHistorico, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 520, 150, -1));
 
         panelInfo.addTab("Precio Historico Productos", jPanel3);
 
@@ -5758,6 +5837,150 @@ public class Sistema extends javax.swing.JFrame {
         // TODO add your handling code here:
         panelInfo.setSelectedIndex(7);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnCreportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreportActionPerformed
+        // TODO add your handling code here:
+         try {
+            ConexionSQL con = new ConexionSQL();
+            Connection conn = con.getConnection();
+
+            JasperReport reporte = null;
+            String path = "src\\Layouts\\ReporteClientes.jasper";
+
+            reporte = (JasperReport) JRLoader.loadObjectFromFile(path);
+
+            JasperPrint jprint = JasperFillManager.fillReport(reporte, null, conn);
+
+            JasperViewer view = new JasperViewer(jprint, false);
+
+            view.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+
+            view.setVisible(true);
+
+        } catch (JRException ex) {
+
+        }
+    }//GEN-LAST:event_btnCreportActionPerformed
+
+    private void btnReporteVendedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReporteVendedoresActionPerformed
+        // TODO add your handling code here:
+        try {
+            ConexionSQL con = new ConexionSQL();
+            Connection conn = con.getConnection();
+
+            JasperReport reporte = null;
+            String path = "src\\Layouts\\ReporteProveedores.jasper";
+
+            reporte = (JasperReport) JRLoader.loadObjectFromFile(path);
+
+            JasperPrint jprint = JasperFillManager.fillReport(reporte, null, conn);
+
+            JasperViewer view = new JasperViewer(jprint, false);
+
+            view.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+
+            view.setVisible(true);
+
+        } catch (JRException ex) {
+
+        }
+    }//GEN-LAST:event_btnReporteVendedoresActionPerformed
+
+    private void btnReporteEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReporteEmpleadosActionPerformed
+        // TODO add your handling code here:
+        try {
+            ConexionSQL con = new ConexionSQL();
+            Connection conn = con.getConnection();
+
+            JasperReport reporte = null;
+            String path = "src\\Layouts\\ReporteEmpleados.jasper";
+
+            reporte = (JasperReport) JRLoader.loadObjectFromFile(path);
+
+            JasperPrint jprint = JasperFillManager.fillReport(reporte, null, conn);
+
+            JasperViewer view = new JasperViewer(jprint, false);
+
+            view.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+
+            view.setVisible(true);
+
+        } catch (JRException ex) {
+
+        }
+    }//GEN-LAST:event_btnReporteEmpleadosActionPerformed
+
+    private void btnReporteProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReporteProductosActionPerformed
+        // TODO add your handling code here:
+        try {
+            ConexionSQL con = new ConexionSQL();
+            Connection conn = con.getConnection();
+
+            JasperReport reporte = null;
+            String path = "src\\Layouts\\ReporteProductos.jasper";
+
+            reporte = (JasperReport) JRLoader.loadObjectFromFile(path);
+
+            JasperPrint jprint = JasperFillManager.fillReport(reporte, null, conn);
+
+            JasperViewer view = new JasperViewer(jprint, false);
+
+            view.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+
+            view.setVisible(true);
+
+        } catch (JRException ex) {
+
+        }
+    }//GEN-LAST:event_btnReporteProductosActionPerformed
+
+    private void btnPrecioHistoricoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrecioHistoricoActionPerformed
+        // TODO add your handling code here:
+        try {
+            ConexionSQL con = new ConexionSQL();
+            Connection conn = con.getConnection();
+
+            JasperReport reporte = null;
+            String path = "src\\Layouts\\ReportPrecioHistorico.jasper";
+
+            reporte = (JasperReport) JRLoader.loadObjectFromFile(path);
+
+            JasperPrint jprint = JasperFillManager.fillReport(reporte, null, conn);
+
+            JasperViewer view = new JasperViewer(jprint, false);
+
+            view.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+
+            view.setVisible(true);
+
+        } catch (JRException ex) {
+
+        }
+    }//GEN-LAST:event_btnPrecioHistoricoActionPerformed
+
+    private void btnReporteHFacturacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReporteHFacturacionActionPerformed
+        // TODO add your handling code here:
+         try {
+            ConexionSQL con = new ConexionSQL();
+            Connection conn = con.getConnection();
+
+            JasperReport reporte = null;
+            String path = "src\\Layouts\\ReporteHistorialFacturacion.jasper";
+
+            reporte = (JasperReport) JRLoader.loadObjectFromFile(path);
+
+            JasperPrint jprint = JasperFillManager.fillReport(reporte, null, conn);
+
+            JasperViewer view = new JasperViewer(jprint, false);
+
+            view.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+
+            view.setVisible(true);
+
+        } catch (JRException ex) {
+
+        }
+    }//GEN-LAST:event_btnReporteHFacturacionActionPerformed
     private static boolean isNumeric(String cadena) {
         try {
             Integer.parseInt(cadena);
@@ -5877,6 +6100,7 @@ public class Sistema extends javax.swing.JFrame {
     private javax.swing.JButton btnCfacturar;
     private javax.swing.JButton btnClientes;
     private javax.swing.JButton btnCrefrescar;
+    private javax.swing.JButton btnCreport;
     private javax.swing.JButton btnEliminarNV;
     private javax.swing.JButton btnEliminarNV2;
     private javax.swing.JButton btnEliminarProductos;
@@ -5894,11 +6118,16 @@ public class Sistema extends javax.swing.JFrame {
     private javax.swing.JButton btnNuevoEmpleado;
     private javax.swing.JButton btnNuevoProveedores;
     private javax.swing.JButton btnPdfVentas;
+    private javax.swing.JButton btnPrecioHistorico;
     private javax.swing.JButton btnProdCancelar;
     private javax.swing.JButton btnProdModificar;
     private javax.swing.JButton btnProductos;
     private javax.swing.JButton btnProveedores;
     private javax.swing.JButton btnRefrescar;
+    private javax.swing.JButton btnReporteEmpleados;
+    private javax.swing.JButton btnReporteHFacturacion;
+    private javax.swing.JButton btnReporteProductos;
+    private javax.swing.JButton btnReporteVendedores;
     private javax.swing.JButton btnVentaNV;
     private javax.swing.JButton btnVentas;
     private javax.swing.JButton btncancel;

@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="619b6365-ab69-4f44-a7b9-d0a8d1cf3236">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select a.idFacturaCompra,a.Fecha,b.Nombre as Empleado,c.Nombre as Proveedor,d.descripcion as FormaPago,a.Total from facturacompra as a 
+join empleado as b on a.FkVendedor=b.idEmpleado 
+join proveedor as c on a.FkProveedor=c.idProveedor
+join formapago as d on a.FormaPago=d.idFormaPago]]>
+	</queryString>
+	<field name="idFacturaCompra" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Fecha" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Empleado" class="java.lang.String"/>
+	<field name="Proveedor" class="java.lang.String"/>
+	<field name="FormaPago" class="java.lang.String"/>
+	<field name="Total" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="122" splitType="Stretch">
+			<staticText>
+				<reportElement x="276" y="48" width="137" height="24" forecolor="#003333" uuid="d69ee47f-cc67-4f13-ae6b-13b7646d93da"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FECHA DE IMPRESION:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="138" y="0" width="340" height="35" forecolor="#003333" uuid="69aa5f0e-aeba-48fe-9b2f-a76c1c88da74"/>
+				<textElement>
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[REPORTE DE COMPRAS]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="413" y="48" width="100" height="20" forecolor="#003333" uuid="e26bc79c-1f6c-49b8-91d7-3c431adcdb39"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern="h.mm a">
+				<reportElement x="413" y="77" width="133" height="20" forecolor="#003333" uuid="a13fd1bd-86a5-497f-9a66-006bf388dce1"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="276" y="77" width="137" height="24" forecolor="#003333" uuid="2878b4dd-5dbf-4976-b7ec-1c707d1480ad"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[HORA DE IMPRESION:]]></text>
+			</staticText>
+			<image>
+				<reportElement x="13" y="48" width="171" height="52" uuid="fe65418e-1761-416b-acb4-94654d574e23"/>
+				<imageExpression><![CDATA["C:\\Users\\Omaly Breve\\Desktop\\Civerlac\\src\\Img\\LOGO PEQUENO.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<line>
+				<reportElement x="2" y="12" width="553" height="1" uuid="f615e3a8-5b97-4159-a8a3-30501cc6cd86"/>
+			</line>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="25" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="92" height="20" forecolor="#003333" uuid="171aedd9-88f8-4046-8c53-93e443556780"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Codigo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="92" y="0" width="92" height="20" forecolor="#003333" uuid="032ddc05-2f53-4a7c-b705-6a650aa552a9"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="184" y="0" width="92" height="20" forecolor="#003333" uuid="4ff85148-0e09-4181-b25d-0461406f32f1"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Empleado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="276" y="0" width="92" height="20" forecolor="#003333" uuid="6eabd1cf-e46c-4e04-b0a1-56e513038db9"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Proveedor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="386" y="0" width="92" height="20" forecolor="#003333" uuid="062050be-7821-47a2-9e31-b564653fd4dc"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Forma de Pago]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="478" y="0" width="77" height="20" forecolor="#003333" uuid="a65c7de5-6625-49c4-88ee-53f5efbb7a81"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="24" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="92" height="20" uuid="7b626125-4dff-46b0-b5a6-5166de3eec9c"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{idFacturaCompra}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="92" y="0" width="92" height="20" uuid="17e25e8a-9e5c-42dc-b622-d54bbcc10af9"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Fecha}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="184" y="0" width="92" height="20" uuid="7ddee59e-467c-4882-8dd9-cff76ab27267"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Empleado}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="276" y="0" width="92" height="20" uuid="b5626a2c-86b5-4898-babc-1828703ccb6e"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Proveedor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="386" y="0" width="92" height="20" uuid="fdd49d1d-2887-4dea-982f-c3b33db30586"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{FormaPago}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="478" y="0" width="77" height="20" uuid="6f8e79c5-90d3-4bc5-b661-e4541bbb66dc"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Total}+" L"]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<staticText>
+				<reportElement x="368" y="30" width="94" height="24" forecolor="#003333" uuid="b9066be8-dbfc-4bb8-b7d5-7ad9cd47a715"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Impreso por:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="462" y="30" width="100" height="20" forecolor="#003333" uuid="d9e2fa09-c824-4754-ae0d-9b14efeab448"/>
+				<textElement>
+					<font size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Empleado}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="311" y="30" width="40" height="20" uuid="33bd4a7b-04c8-48f3-8099-df7e51285727"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="231" y="30" width="80" height="20" uuid="b9639ebb-452b-4964-b9ca-4893fbb537dd"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Pag "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

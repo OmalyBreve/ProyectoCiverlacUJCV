@@ -1,35 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="14da03f8-8c15-4c6c-93e8-1596f21feef1">
 	<property name="ireport.zoom" value="1.771561000000001"/>
-	<property name="ireport.x" value="17"/>
+	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="Fecha" class="java.lang.String"/>
 	<queryString>
-		<![CDATA[select a.idFactura,a.fechaEmision,b.Cliente,b.Vendedor,c.Nombre,a.cant,c.precio,a.total,d.descripcion,
-(select SUM(total)total from  facturaproducto  where idFactura=$P{Fecha})neto,
-(select round(SUM(total)*0.04,2)  from  facturaproducto  where idFactura=$P{Fecha})ISV,
-(select SUM(total)+(select round(SUM(total)*0.04,2)  from  facturaproducto  where idFactura=(Select idFactura from facturaproducto where idFactura=$P{Fecha} limit 1))  from  facturaproducto  where idFactura=(Select idFactura from facturaproducto where idFactura=$P{Fecha} limit 1))Pagar
+		<![CDATA[select a.idFactura,f.Nombre as Cliente ,g.Nombre as Vendedor,c.Nombre as Producto,a.cant,c.precio,a.total,d.descripcion,
+(SELECT Direccion from datosempresa) as DireccionEmp,
+(SELECT Telefono from datosempresa) as TelEmp,
+(SELECT RTN from datosempresa) as RTN,
+(SELECT CAI from datosempresa) as CAI,
+(SELECT Nombre from datosempresa) as Empresa,
+b.cambio
+,
+(select SUM(total)total from  facturaproducto  where idFactura=(Select idFactura from facturaproducto order by idFactura desc limit 1))neto,
+(select round(SUM(total)*0.15,2)  from  facturaproducto  where idFactura=(Select idFactura from facturaproducto order by idFactura desc limit 1))ISV,
+(select SUM(total)+(select round(SUM(total)*0.15,2)  from  facturaproducto  where idFactura=(Select idFactura from facturaproducto order by idFactura desc limit 1))  from  facturaproducto  where idFactura=(Select idFactura from facturaproducto order by idFactura desc limit 1))Pagar
 from   `facturaproducto` as a 
 join `factura` as b on a.idFactura=b.idFactura
 join producto as c on a.idProducto=c.idProducto
 join formapago as d on b.formapago=d.idFormaPago
+join cliente as f on b.Cliente = F.idCliente 
+JOIN empleado AS g ON b.Vendedor = g.idEmpleado 
 where a.idFactura=$P{Fecha}]]>
 	</queryString>
 	<field name="idFactura" class="java.lang.Integer">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="fechaEmision" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="Cliente" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="Vendedor" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="Nombre" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
+	<field name="Cliente" class="java.lang.String"/>
+	<field name="Vendedor" class="java.lang.String"/>
+	<field name="Producto" class="java.lang.String"/>
 	<field name="cant" class="java.lang.Integer">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
@@ -42,6 +42,14 @@ where a.idFactura=$P{Fecha}]]>
 	<field name="descripcion" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
+	<field name="DireccionEmp" class="java.lang.String"/>
+	<field name="TelEmp" class="java.lang.String"/>
+	<field name="RTN" class="java.lang.String"/>
+	<field name="CAI" class="java.lang.String"/>
+	<field name="Empresa" class="java.lang.String"/>
+	<field name="cambio" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
 	<field name="neto" class="java.lang.Double"/>
 	<field name="ISV" class="java.lang.Double"/>
 	<field name="Pagar" class="java.lang.Double"/>
@@ -49,28 +57,71 @@ where a.idFactura=$P{Fecha}]]>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="110" splitType="Stretch">
+		<band height="177" splitType="Stretch">
+			<image>
+				<reportElement x="10" y="23" width="171" height="52" uuid="cf6829ba-7cac-4681-8175-5fb0601e8cc6"/>
+				<imageExpression><![CDATA["C:\\Users\\Omaly Breve\\Desktop\\Civerlac\\src\\Img\\LOGO PEQUENO.jpg"]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="233" y="95" width="262" height="20" uuid="6b6e8a95-2197-4f75-8e79-95f5285ace8c"/>
+				<textFieldExpression><![CDATA[$F{CAI}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="264" y="135" width="100" height="20" uuid="64eb6638-7837-465b-8b47-474de06f8050"/>
+				<textFieldExpression><![CDATA[$F{TelEmp}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="245" y="75" width="250" height="20" uuid="787af298-d3d8-40d6-a963-2237da3a2450"/>
+				<textFieldExpression><![CDATA[$F{RTN}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="212" y="35" width="140" height="20" uuid="8a94ec92-4312-4045-acc7-172411417075"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DireccionEmp}]]></textFieldExpression>
+			</textField>
 			<staticText>
-				<reportElement x="194" y="48" width="152" height="20" uuid="0321df96-0005-435f-bbcc-6b1c4ed7acf1"/>
-				<text><![CDATA[Tegucigalpa, Francisco Morazan]]></text>
+				<reportElement x="212" y="55" width="206" height="20" uuid="04e0a6ca-e8f2-4358-858e-ab89afd52243"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Distrito Central, F.M.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="230" y="68" width="146" height="20" uuid="f62efcaf-ff3b-4eed-825e-9fe74627aca0"/>
-				<text><![CDATA[Colonia Humuya]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="235" y="88" width="98" height="20" uuid="d6c29b93-a6c4-4980-9e75-07a8a30375d4"/>
+				<reportElement x="212" y="115" width="164" height="20" uuid="5c66a0e9-cf3a-4691-afce-51cdaa7f97e6"/>
 				<textElement>
 					<font isBold="false"/>
 				</textElement>
-				<text><![CDATA[Tel: 97268178]]></text>
+				<text><![CDATA[Email:infociverlac@gmail.com]]></text>
 			</staticText>
-			<staticText>
-				<reportElement x="180" y="12" width="326" height="36" uuid="1ee4ebd9-9c04-4aa2-8ec1-a09206c3abae"/>
+			<textField>
+				<reportElement x="199" y="0" width="219" height="35" uuid="ca479db1-f8a5-427f-a9e2-72dfb9bc19cc"/>
 				<textElement>
 					<font size="20" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Lacteos Civerlac]]></text>
+				<textFieldExpression><![CDATA[$F{Empresa}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="212" y="75" width="33" height="20" uuid="5742b32d-0a07-4a1f-966f-af0adc2c5c74"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[R.T.N. ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="212" y="135" width="113" height="20" uuid="9ca192b4-835e-4a40-97a8-effd42121040"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Telefono:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="212" y="95" width="33" height="20" uuid="81914ba5-a386-4001-a61e-613c6a66f652"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CAI: ]]></text>
 			</staticText>
 		</band>
 	</title>
@@ -92,7 +143,7 @@ where a.idFactura=$P{Fecha}]]>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[Nombre:]]></text>
+				<text><![CDATA[Cliente:]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="180" y="26" width="100" height="20" uuid="ab0a264a-574d-49bd-8066-4373490cc9dc"/>
@@ -188,7 +239,7 @@ where a.idFactura=$P{Fecha}]]>
 		<band height="32" splitType="Stretch">
 			<textField>
 				<reportElement x="147" y="0" width="100" height="20" uuid="38a6c2c2-82c0-466e-9ed8-2be3f0b2546e"/>
-				<textFieldExpression><![CDATA[$F{Nombre}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{Producto}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="252" y="0" width="100" height="20" uuid="5a8ad035-baed-4f9b-83d0-a5b1d9874204"/>
